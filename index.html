@@ -1,19 +1,24 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechCore Computadores | Performance e Tecnologia de Ponta</title>
     <meta name="description" content="Encontre os melhores computadores, notebooks e periféricos na TechCore. Indicações especialistas com links oficiais do Mercado Livre.">
+    <!-- Tailwind CSS para estilização rápida e performática -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --neon-blue: #38BDF8;
+            --neon-green: #22C55E;
+            --dark-bg: #020617;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0F172A;
+            background-color: var(--dark-bg);
             color: #F8FAFC;
         }
         .font-tech {
@@ -27,45 +32,287 @@
         }
         .glow-blue:hover {
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-            transform: translateY(-2px);
-        }
-        .glow-green:hover {
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
-            transform: translateY(-2px);
         }
         .text-neon-blue {
-            color: #38BDF8;
+            color: var(--neon-blue);
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
         .bg-neon-blue {
-            background-color: #38BDF8;
+            background-color: var(--neon-blue);
         }
-        .border-neon-blue {
-            border-color: #38BDF8;
-        }
-        .bg-neon-green {
-            background-color: #22C55E;
+        .text-neon-green {
+            color: var(--neon-green);
         }
         .hero-gradient {
             background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent),
                         radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.1), transparent);
         }
-        html {
-            scroll-behavior: smooth;
+        /* Mobile Menu Transitions */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+        /* Fix para evitar flash branco no carregamento */
+        html { background-color: #020617; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3"
-  }
-}
-</script>
 </head>
-<body>
+<body class="selection:bg-sky-500 selection:text-slate-950 overflow-x-hidden">
+
+    <!-- Container para React (se necessário pelo ambiente) mas o app é vanilla -->
     <div id="root"></div>
+
+    <!-- HEADER -->
+    <header id="main-header" class="fixed top-0 w-full z-[100] transition-all duration-500 py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center relative z-[110]">
+            <a href="#" onclick="navigateTo('INICIO', event)" class="font-tech text-2xl font-bold tracking-tighter group">
+                TECH<span class="text-neon-blue group-hover:text-neon-green transition-colors">CORE</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#" onclick="navigateTo('INICIO', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Início</a>
+                <a href="#" onclick="navigateTo('COMPUTADORES', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Computadores</a>
+                <a href="#" onclick="navigateTo('NOTEBOOKS', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Notebooks</a>
+                <a href="#" onclick="navigateTo('PERIFERICOS', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Periféricos</a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <button id="menu-toggle" class="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors relative z-[120]">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 w-full h-full bg-[#020617] z-[9999] flex flex-col items-center justify-center opacity-0 invisible pointer-events-none">
+        <div class="absolute top-0 w-full py-6 px-6 flex justify-between items-center border-b border-white/5 bg-[#020617]">
+            <span class="font-tech text-2xl font-bold tracking-tighter">
+                TECH<span class="text-neon-blue">CORE</span>
+            </span>
+            <button id="menu-close" class="text-white p-2">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <nav class="flex flex-col items-center space-y-10 px-6">
+            <a href="#" onclick="navigateTo('INICIO', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Início</a>
+            <a href="#" onclick="navigateTo('COMPUTADORES', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Computadores</a>
+            <a href="#" onclick="navigateTo('NOTEBOOKS', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Notebooks</a>
+            <a href="#" onclick="navigateTo('PERIFERICOS', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Periféricos</a>
+            <button onclick="navigateTo('TODOS', event)" class="mt-10 px-12 py-6 bg-neon-blue text-[#020617] font-black rounded-2xl uppercase tracking-tighter text-lg shadow-[0_0_40px_rgba(56,189,248,0.4)] active:scale-95 transition-transform">
+                Ver Catálogo Tech
+            </button>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO -->
+        <section id="home" class="relative min-h-screen flex items-center pt-20 hero-gradient overflow-hidden">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="z-10 text-center md:text-left">
+                    <span class="inline-block py-1 px-4 mb-6 border border-neon-blue/30 rounded-full bg-neon-blue/5 text-neon-blue text-[10px] font-black tracking-[0.3em] uppercase">
+                        Tecnologia de Elite
+                    </span>
+                    <h1 class="text-5xl md:text-8xl font-tech font-bold leading-none mb-6">
+                        Poder sem <span class="text-neon-blue italic">limites</span>.
+                    </h1>
+                    <p class="text-lg text-slate-400 mb-10 max-w-lg leading-relaxed mx-auto md:mx-0">
+                        Escolha a máquina que vai elevar seu nível. De gamers a profissionais, entregamos a melhor curadoria de hardware do Brasil.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <button onclick="navigateTo('TODOS', event)" class="px-10 py-5 bg-neon-blue hover:bg-sky-400 text-slate-950 font-black rounded-xl transition-all duration-300 flex items-center justify-center gap-3 glow-blue shadow-lg active:scale-95">
+                            VER CATÁLOGO TECH
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="relative group hidden md:block">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-neon-blue to-neon-green rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&q=80&w=1200" alt="Hardware Premium" class="relative rounded-3xl object-cover w-full aspect-[4/3] shadow-2xl transition-all duration-700 group-hover:scale-[1.02] border border-white/10">
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS -->
+        <section class="py-24 bg-slate-950">
+            <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 text-center md:text-left">
+                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all">
+                    <i data-lucide="zap" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0"></i>
+                    <h4 class="text-xl font-tech font-bold mb-3 uppercase">Turbo Boost</h4>
+                    <p class="text-slate-500 text-sm">Máquinas configuradas para extrair cada MHz extra.</p>
+                </div>
+                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all">
+                    <i data-lucide="cpu" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0"></i>
+                    <h4 class="text-xl font-tech font-bold mb-3 uppercase">Hardware Gen-X</h4>
+                    <p class="text-slate-500 text-sm">Apenas componentes de última geração garantidos.</p>
+                </div>
+                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all">
+                    <i data-lucide="shopping-bag" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0"></i>
+                    <h4 class="text-xl font-tech font-bold mb-3 uppercase">Preço Real</h4>
+                    <p class="text-slate-500 text-sm">Análise algorítmica do melhor custo do dia.</p>
+                </div>
+                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all">
+                    <i data-lucide="shield-check" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0"></i>
+                    <h4 class="text-xl font-tech font-bold mb-3 uppercase">Safe Trade</h4>
+                    <p class="text-slate-500 text-sm">Proteção total Mercado Pago em cada clique.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATALOG -->
+        <section id="produtos" class="py-24 scroll-mt-24">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row justify-between items-center mb-16 gap-8">
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-4xl md:text-6xl font-tech font-bold mb-4">Equipamento de <span class="text-neon-blue">Missão</span></h2>
+                        <p class="text-slate-400">Encontre o hardware ideal para seu workflow.</p>
+                    </div>
+                    <div class="flex flex-col gap-4 items-center lg:items-end">
+                        <div id="category-filters" class="flex flex-wrap gap-3 justify-center">
+                            <button onclick="setCategory('TODOS')" data-cat="TODOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest bg-neon-blue text-slate-950">TODOS</button>
+                            <button onclick="setCategory('NOTEBOOKS')" data-cat="NOTEBOOKS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400">NOTEBOOKS</button>
+                            <button onclick="setCategory('COMPUTADORES')" data-cat="COMPUTADORES" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400">COMPUTADORES</button>
+                            <button onclick="setCategory('PERIFERICOS')" data-cat="PERIFERICOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400">PERIFERICOS</button>
+                        </div>
+                        <div id="sub-filters" class="hidden flex-wrap gap-2 justify-center">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Cards via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ECOSSISTEMA -->
+        <section class="py-24 border-t border-white/5">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-tech font-bold mb-4 uppercase">Ecossistema <span class="text-neon-blue">TechCore</span></h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass p-8 rounded-3xl text-center">
+                        <i data-lucide="code" class="text-neon-blue mb-4 w-8 h-8 mx-auto"></i>
+                        <h4 class="text-xl font-tech font-bold mb-2">BYTEFLOW</h4>
+                        <p class="text-slate-500 text-sm">Agência de desenvolvimento de alta performance.</p>
+                    </div>
+                    <div class="glass p-8 rounded-3xl text-center">
+                        <i data-lucide="globe" class="text-neon-green mb-4 w-8 h-8 mx-auto"></i>
+                        <h4 class="text-xl font-tech font-bold mb-2">CODEPULSE</h4>
+                        <p class="text-slate-500 text-sm">Notícias e insights sobre o futuro da programação.</p>
+                    </div>
+                    <div class="glass p-8 rounded-3xl text-center">
+                        <i data-lucide="layers" class="text-purple-400 mb-4 w-8 h-8 mx-auto"></i>
+                        <h4 class="text-xl font-tech font-bold mb-2">DEVSPHERE</h4>
+                        <p class="text-slate-500 text-sm">Comunidade brasileira de desenvolvedores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-black text-center text-slate-600 text-xs uppercase tracking-widest border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <p class="mb-4">&copy; 2024 TECHCORE LABS • TODOS OS DIREITOS RESERVADOS</p>
+            <p>Participamos do Programa de Afiliados do Mercado Livre.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        const products = [
+            { image: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&q=80&w=600", title: "PC Gamer Dominator V1", desc: "RTX 4070 Ti, Intel i7-14700K, 32GB RAM DDR5.", price: "R$ 8.490", category: 'COMPUTADORES' },
+            { image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600", title: "PC Elite 4K Beast", desc: "RTX 4090, i9-14900KS, Watercooling Custom.", price: "R$ 18.490", category: 'COMPUTADORES' },
+            { image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600", title: "Notebook Pro Elite 16\"", desc: "i9 13th Gen, RTX 4060, Tela 4K OLED.", price: "R$ 6.199", category: 'NOTEBOOKS' },
+            { image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&q=80&w=600", title: "Laptop Gamer Nitro Z", desc: "Ryzen 9, RTX 4080 Mobile, Tela 165Hz.", price: "R$ 12.500", category: 'NOTEBOOKS' },
+            { image: "https://images.unsplash.com/photo-1527814732934-94a85e4839d9?auto=format&fit=crop&q=80&w=600", title: "Mouse Precision Elite", desc: "26.000 DPI, Sensor Óptico de Próxima Geração.", price: "R$ 490", category: 'PERIFERICOS', sub: 'MOUSE' },
+            { image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600", title: "Teclado Mecânico Pro X", desc: "Switches Hot-swap, RGB Chroma, Alumínio.", price: "R$ 850", category: 'PERIFERICOS', sub: 'TECLADO' },
+            { image: "https://images.unsplash.com/photo-1558977551-d0df18930994?auto=format&fit=crop&q=80&w=600", title: "Monitor Curvo 165Hz", desc: "27 polegadas, 1ms, Cores sRGB 120%.", price: "R$ 1.290", category: 'PERIFERICOS', sub: 'MONITOR' },
+            { image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600", title: "RTX 4080 Super", desc: "Tecnologia DLSS 3, 16GB GDDR6X.", price: "R$ 7.200", category: 'PERIFERICOS', sub: 'PLACA' }
+        ];
+
+        let currentCat = 'TODOS';
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            const filtered = currentCat === 'TODOS' ? products : products.filter(p => p.category === currentCat);
+            
+            filtered.forEach(p => {
+                const search = `https://lista.mercadolivre.com.br/${encodeURIComponent(p.title)}`;
+                grid.innerHTML += `
+                    <div class="glass p-5 rounded-3xl flex flex-col hover:-translate-y-2 transition-all glow-blue">
+                        <img src="${p.image}" class="rounded-2xl h-48 object-cover mb-4">
+                        <h3 class="font-tech font-bold text-lg mb-2">${p.title}</h3>
+                        <p class="text-slate-500 text-xs mb-6 flex-grow">${p.desc}</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-neon-green font-bold text-xl">${p.price}</span>
+                        </div>
+                        <a href="${search}" target="_blank" class="bg-white/5 hover:bg-neon-blue hover:text-slate-950 p-3 rounded-xl text-center text-xs font-black transition-all">COMPRAR NO ML</a>
+                    </div>
+                `;
+            });
+            lucide.createIcons();
+        }
+
+        function setCategory(cat) {
+            currentCat = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if(btn.dataset.cat === cat) {
+                    btn.classList.add('bg-neon-blue', 'text-slate-950');
+                    btn.classList.remove('glass', 'text-slate-400');
+                } else {
+                    btn.classList.remove('bg-neon-blue', 'text-slate-950');
+                    btn.classList.add('glass', 'text-slate-400');
+                }
+            });
+            renderProducts();
+        }
+
+        function navigateTo(target, e) {
+            e.preventDefault();
+            toggleMobileMenu(false);
+            if(target === 'INICIO') {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else {
+                setCategory(target);
+                document.getElementById('produtos').scrollIntoView({behavior: 'smooth'});
+            }
+        }
+
+        function toggleMobileMenu(show) {
+            const el = document.getElementById('mobile-menu-overlay');
+            if(show) {
+                el.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+                el.classList.add('opacity-100', 'visible');
+            } else {
+                el.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+                el.classList.remove('opacity-100', 'visible');
+            }
+        }
+
+        document.getElementById('menu-toggle').addEventListener('click', () => toggleMobileMenu(true));
+        document.getElementById('menu-close').addEventListener('click', () => toggleMobileMenu(false));
+
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderProducts();
+        });
+
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('main-header');
+            window.scrollY > 20 ? h.classList.add('glass', 'py-3') : h.classList.remove('glass', 'py-3');
+        });
+    </script>
 </body>
 </html>
