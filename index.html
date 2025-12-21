@@ -30,8 +30,13 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+        .glow-blue {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
         .glow-blue:hover {
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-8px) scale(1.01);
         }
         .text-neon-blue {
             color: var(--neon-blue);
@@ -57,13 +62,19 @@
             -webkit-box-orient: vertical;  
             overflow: hidden;
         }
+        /* Custom image zoom */
+        .img-zoom {
+            transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.1);
+        }
         /* Fix para evitar flash branco no carregamento */
         html { background-color: #020617; }
     </style>
 </head>
 <body class="selection:bg-sky-500 selection:text-slate-950 overflow-x-hidden">
 
-    <!-- Container para React (se necessário pelo ambiente) mas o app é vanilla -->
     <div id="root"></div>
 
     <!-- HEADER -->
@@ -142,24 +153,24 @@
         <!-- BENEFITS -->
         <section class="py-24 bg-slate-950">
             <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 text-center md:text-left">
-                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all">
-                    <i data-lucide="zap" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0"></i>
-                    <h4 class="text-xl font-tech font-bold mb-3 uppercase">Turbo Boost</h4>
+                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all glow-blue group">
+                    <i data-lucide="zap" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0 group-hover:scale-110 transition-transform"></i>
+                    <h4 class="text-xl font-tech font-bold mb-3 uppercase group-hover:text-neon-blue transition-colors">Turbo Boost</h4>
                     <p class="text-slate-500 text-sm">Máquinas configuradas para extrair cada MHz extra.</p>
                 </div>
-                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all">
-                    <i data-lucide="cpu" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0"></i>
-                    <h4 class="text-xl font-tech font-bold mb-3 uppercase">Hardware Gen-X</h4>
+                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all glow-blue group">
+                    <i data-lucide="cpu" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0 group-hover:scale-110 transition-transform"></i>
+                    <h4 class="text-xl font-tech font-bold mb-3 uppercase group-hover:text-neon-blue transition-colors">Hardware Gen-X</h4>
                     <p class="text-slate-500 text-sm">Apenas componentes de última geração garantidos.</p>
                 </div>
-                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all">
-                    <i data-lucide="shopping-bag" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0"></i>
-                    <h4 class="text-xl font-tech font-bold mb-3 uppercase">Preço Real</h4>
+                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all glow-blue group">
+                    <i data-lucide="shopping-bag" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0 group-hover:scale-110 transition-transform"></i>
+                    <h4 class="text-xl font-tech font-bold mb-3 uppercase group-hover:text-neon-blue transition-colors">Preço Real</h4>
                     <p class="text-slate-500 text-sm">Análise algorítmica do melhor custo do dia.</p>
                 </div>
-                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all">
-                    <i data-lucide="shield-check" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0"></i>
-                    <h4 class="text-xl font-tech font-bold mb-3 uppercase">Safe Trade</h4>
+                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all glow-blue group">
+                    <i data-lucide="shield-check" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0 group-hover:scale-110 transition-transform"></i>
+                    <h4 class="text-xl font-tech font-bold mb-3 uppercase group-hover:text-neon-blue transition-colors">Safe Trade</h4>
                     <p class="text-slate-500 text-sm">Proteção total Mercado Pago em cada clique.</p>
                 </div>
             </div>
@@ -175,13 +186,10 @@
                     </div>
                     <div class="flex flex-col gap-4 items-center lg:items-end">
                         <div id="category-filters" class="flex flex-wrap gap-3 justify-center">
-                            <button onclick="setCategory('TODOS')" data-cat="TODOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest bg-neon-blue text-slate-950">TODOS</button>
-                            <button onclick="setCategory('NOTEBOOKS')" data-cat="NOTEBOOKS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400">NOTEBOOKS</button>
-                            <button onclick="setCategory('COMPUTADORES')" data-cat="COMPUTADORES" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400">COMPUTADORES</button>
-                            <button onclick="setCategory('PERIFERICOS')" data-cat="PERIFERICOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400">PERIFERICOS</button>
-                        </div>
-                        <div id="sub-filters" class="hidden flex-wrap gap-2 justify-center">
-                            <!-- Injected via JS -->
+                            <button onclick="setCategory('TODOS')" data-cat="TODOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest bg-neon-blue text-slate-950 transition-all hover:scale-105 active:scale-95">TODOS</button>
+                            <button onclick="setCategory('NOTEBOOKS')" data-cat="NOTEBOOKS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40">NOTEBOOKS</button>
+                            <button onclick="setCategory('COMPUTADORES')" data-cat="COMPUTADORES" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40">COMPUTADORES</button>
+                            <button onclick="setCategory('PERIFERICOS')" data-cat="PERIFERICOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40">PERIFERICOS</button>
                         </div>
                     </div>
                 </div>
@@ -193,25 +201,25 @@
         </section>
 
         <!-- ECOSSISTEMA -->
-        <section class="py-24 border-t border-white/5">
+        <section class="py-24 border-t border-white/5 bg-slate-950/50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-5xl font-tech font-bold mb-4 uppercase">Ecossistema <span class="text-neon-blue">TechCore</span></h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="glass p-8 rounded-3xl text-center">
-                        <i data-lucide="code" class="text-neon-blue mb-4 w-8 h-8 mx-auto"></i>
-                        <h4 class="text-xl font-tech font-bold mb-2">BYTEFLOW</h4>
+                    <div class="glass p-8 rounded-3xl text-center glow-blue group cursor-pointer transition-all">
+                        <i data-lucide="code" class="text-neon-blue mb-4 w-8 h-8 mx-auto transition-transform group-hover:scale-125 duration-500"></i>
+                        <h4 class="text-xl font-tech font-bold mb-2 group-hover:text-neon-blue transition-colors">BYTEFLOW</h4>
                         <p class="text-slate-500 text-sm">Agência de desenvolvimento de alta performance.</p>
                     </div>
-                    <div class="glass p-8 rounded-3xl text-center">
-                        <i data-lucide="globe" class="text-neon-green mb-4 w-8 h-8 mx-auto"></i>
-                        <h4 class="text-xl font-tech font-bold mb-2">CODEPULSE</h4>
+                    <div class="glass p-8 rounded-3xl text-center glow-blue group cursor-pointer transition-all">
+                        <i data-lucide="globe" class="text-neon-green mb-4 w-8 h-8 mx-auto transition-transform group-hover:scale-125 duration-500"></i>
+                        <h4 class="text-xl font-tech font-bold mb-2 group-hover:text-neon-green transition-colors">CODEPULSE</h4>
                         <p class="text-slate-500 text-sm">Notícias e insights sobre o futuro da programação.</p>
                     </div>
-                    <div class="glass p-8 rounded-3xl text-center">
-                        <i data-lucide="layers" class="text-purple-400 mb-4 w-8 h-8 mx-auto"></i>
-                        <h4 class="text-xl font-tech font-bold mb-2">DEVSPHERE</h4>
+                    <div class="glass p-8 rounded-3xl text-center glow-blue group cursor-pointer transition-all">
+                        <i data-lucide="layers" class="text-purple-400 mb-4 w-8 h-8 mx-auto transition-transform group-hover:scale-125 duration-500"></i>
+                        <h4 class="text-xl font-tech font-bold mb-2 group-hover:text-purple-400 transition-colors">DEVSPHERE</h4>
                         <p class="text-slate-500 text-sm">Comunidade brasileira de desenvolvedores.</p>
                     </div>
                 </div>
@@ -251,14 +259,16 @@
             filtered.forEach(p => {
                 const search = `https://lista.mercadolivre.com.br/${encodeURIComponent(p.title)}`;
                 grid.innerHTML += `
-                    <div class="glass p-5 rounded-3xl flex flex-col hover:-translate-y-2 transition-all glow-blue">
-                        <img src="${p.image}" class="rounded-2xl h-48 object-cover mb-4">
-                        <h3 class="font-tech font-bold text-lg mb-2">${p.title}</h3>
+                    <div class="glass p-5 rounded-3xl flex flex-col glow-blue group">
+                        <div class="overflow-hidden rounded-2xl mb-4 h-48">
+                            <img src="${p.image}" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <h3 class="font-tech font-bold text-lg mb-2 group-hover:text-neon-blue transition-colors">${p.title}</h3>
                         <p class="text-slate-500 text-xs mb-6 flex-grow">${p.desc}</p>
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-neon-green font-bold text-xl">${p.price}</span>
                         </div>
-                        <a href="${search}" target="_blank" class="bg-white/5 hover:bg-neon-blue hover:text-slate-950 p-3 rounded-xl text-center text-xs font-black transition-all">COMPRAR NO ML</a>
+                        <a href="${search}" target="_blank" class="bg-white/5 hover:bg-neon-blue hover:text-slate-950 p-3 rounded-xl text-center text-xs font-black transition-all transform hover:scale-105 active:scale-95 shadow-lg">COMPRAR NO ML</a>
                     </div>
                 `;
             });
@@ -269,11 +279,9 @@
             currentCat = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 if(btn.dataset.cat === cat) {
-                    btn.classList.add('bg-neon-blue', 'text-slate-950');
-                    btn.classList.remove('glass', 'text-slate-400');
+                    btn.className = "cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest bg-neon-blue text-slate-950 transition-all hover:scale-105 active:scale-95";
                 } else {
-                    btn.classList.remove('bg-neon-blue', 'text-slate-950');
-                    btn.classList.add('glass', 'text-slate-400');
+                    btn.className = "cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40";
                 }
             });
             renderProducts();
@@ -295,9 +303,11 @@
             if(show) {
                 el.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
                 el.classList.add('opacity-100', 'visible');
+                document.body.style.overflow = 'hidden';
             } else {
                 el.classList.add('opacity-0', 'invisible', 'pointer-events-none');
                 el.classList.remove('opacity-100', 'visible');
+                document.body.style.overflow = 'unset';
             }
         }
 
@@ -311,7 +321,13 @@
 
         window.addEventListener('scroll', () => {
             const h = document.getElementById('main-header');
-            window.scrollY > 20 ? h.classList.add('glass', 'py-3') : h.classList.remove('glass', 'py-3');
+            if (window.scrollY > 20) {
+                h.classList.add('glass', 'py-3', 'shadow-xl');
+                h.classList.remove('py-6');
+            } else {
+                h.classList.remove('glass', 'py-3', 'shadow-xl');
+                h.classList.add('py-6');
+            }
         });
     </script>
 </body>
