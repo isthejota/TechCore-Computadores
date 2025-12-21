@@ -15,6 +15,7 @@
             --neon-blue: #38BDF8;
             --neon-green: #22C55E;
             --dark-bg: #020617;
+            --mp-blue: #009EE3;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -45,37 +46,33 @@
         .bg-neon-blue {
             background-color: var(--neon-blue);
         }
-        .text-neon-green {
-            color: var(--neon-green);
-        }
         .hero-gradient {
             background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent),
                         radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.1), transparent);
         }
-        /* Mobile Menu Transitions */
         #mobile-menu-overlay {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;  
-            overflow: hidden;
-        }
-        /* Custom image zoom */
         .img-zoom {
             transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
         }
         .group:hover .img-zoom {
             transform: scale(1.1);
         }
-        /* Fix para evitar flash branco no carregamento */
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
         html { background-color: #020617; }
     </style>
 </head>
 <body class="selection:bg-sky-500 selection:text-slate-950 overflow-x-hidden">
-
-    <div id="root"></div>
 
     <!-- HEADER -->
     <header id="main-header" class="fixed top-0 w-full z-[100] transition-all duration-500 py-6">
@@ -87,12 +84,11 @@
             <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-8 items-center">
                 <a href="#" onclick="navigateTo('INICIO', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Início</a>
-                <a href="#" onclick="navigateTo('COMPUTADORES', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Computadores</a>
-                <a href="#" onclick="navigateTo('NOTEBOOKS', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Notebooks</a>
-                <a href="#" onclick="navigateTo('PERIFERICOS', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Periféricos</a>
+                <a href="#" onclick="scrollToSection('guias')" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Guias</a>
+                <a href="#" onclick="navigateTo('COMPUTADORES', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Máquinas</a>
+                <a href="#" onclick="navigateTo('PERIFERICOS', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Setup</a>
             </nav>
 
-            <!-- Mobile Toggle -->
             <button id="menu-toggle" class="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors relative z-[120]">
                 <i data-lucide="menu" class="w-8 h-8"></i>
             </button>
@@ -112,33 +108,32 @@
 
         <nav class="flex flex-col items-center space-y-10 px-6">
             <a href="#" onclick="navigateTo('INICIO', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Início</a>
+            <a href="#" onclick="scrollToSection('guias'); toggleMobileMenu(false);" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Guias</a>
             <a href="#" onclick="navigateTo('COMPUTADORES', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Computadores</a>
-            <a href="#" onclick="navigateTo('NOTEBOOKS', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Notebooks</a>
-            <a href="#" onclick="navigateTo('PERIFERICOS', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Periféricos</a>
+            <a href="#" onclick="navigateTo('PERIFERICOS', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Setup</a>
             <button onclick="navigateTo('TODOS', event)" class="mt-10 px-12 py-6 bg-neon-blue text-[#020617] font-black rounded-2xl uppercase tracking-tighter text-lg shadow-[0_0_40px_rgba(56,189,248,0.4)] active:scale-95 transition-transform">
                 Ver Catálogo Tech
             </button>
         </nav>
     </div>
 
-    <!-- MAIN CONTENT -->
     <main>
         <!-- HERO -->
-        <section id="home" class="relative min-h-screen flex items-center pt-20 hero-gradient overflow-hidden">
+        <section id="home" class="relative min-h-[90vh] flex items-center pt-20 hero-gradient overflow-hidden">
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
                 <div class="z-10 text-center md:text-left">
                     <span class="inline-block py-1 px-4 mb-6 border border-neon-blue/30 rounded-full bg-neon-blue/5 text-neon-blue text-[10px] font-black tracking-[0.3em] uppercase">
-                        Tecnologia de Elite
+                        Lab de Performance Brasileira
                     </span>
                     <h1 class="text-5xl md:text-8xl font-tech font-bold leading-none mb-6">
-                        Poder sem <span class="text-neon-blue italic">limites</span>.
+                        Domine o seu <span class="text-neon-blue italic">Digital</span>.
                     </h1>
                     <p class="text-lg text-slate-400 mb-10 max-w-lg leading-relaxed mx-auto md:mx-0">
-                        Escolha a máquina que vai elevar seu nível. De gamers a profissionais, entregamos a melhor curadoria de hardware do Brasil.
+                        Não compre apenas hardware. Adquira a vantagem competitiva que você precisa para criar, jogar e vencer com a melhor curadoria do Brasil.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                         <button onclick="navigateTo('TODOS', event)" class="px-10 py-5 bg-neon-blue hover:bg-sky-400 text-slate-950 font-black rounded-xl transition-all duration-300 flex items-center justify-center gap-3 glow-blue shadow-lg active:scale-95">
-                            VER CATÁLOGO TECH
+                            EXPLORAR MÁQUINAS
                             <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </button>
                     </div>
@@ -150,29 +145,51 @@
             </div>
         </section>
 
-        <!-- BENEFITS -->
-        <section class="py-24 bg-slate-950">
-            <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 text-center md:text-left">
-                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all glow-blue group">
-                    <i data-lucide="zap" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-tech font-bold mb-3 uppercase group-hover:text-neon-blue transition-colors">Turbo Boost</h4>
-                    <p class="text-slate-500 text-sm">Máquinas configuradas para extrair cada MHz extra.</p>
+        <!-- STATS STRIP -->
+        <section class="py-12 bg-slate-950 border-y border-white/5">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-tech font-bold text-white mb-1">15K+</div>
+                        <div class="text-[10px] text-slate-500 uppercase tracking-widest">Builds Recomendadas</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-tech font-bold text-neon-blue mb-1">500+</div>
+                        <div class="text-[10px] text-slate-500 uppercase tracking-widest">Benchmarks Diários</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-tech font-bold text-white mb-1">100%</div>
+                        <div class="text-[10px] text-slate-500 uppercase tracking-widest">Garantia Mercado Livre</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-tech font-bold text-neon-green mb-1">24/7</div>
+                        <div class="text-[10px] text-slate-500 uppercase tracking-widest">Monitoramento de Preços</div>
+                    </div>
                 </div>
-                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all glow-blue group">
-                    <i data-lucide="cpu" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-tech font-bold mb-3 uppercase group-hover:text-neon-blue transition-colors">Hardware Gen-X</h4>
-                    <p class="text-slate-500 text-sm">Apenas componentes de última geração garantidos.</p>
-                </div>
-                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all glow-blue group">
-                    <i data-lucide="shopping-bag" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-tech font-bold mb-3 uppercase group-hover:text-neon-blue transition-colors">Preço Real</h4>
-                    <p class="text-slate-500 text-sm">Análise algorítmica do melhor custo do dia.</p>
-                </div>
-                <div class="p-8 rounded-3xl glass hover:bg-white/5 transition-all glow-blue group">
-                    <i data-lucide="shield-check" class="text-neon-blue mb-6 w-10 h-10 mx-auto md:mx-0 group-hover:scale-110 transition-transform"></i>
-                    <h4 class="text-xl font-tech font-bold mb-3 uppercase group-hover:text-neon-blue transition-colors">Safe Trade</h4>
-                    <p class="text-slate-500 text-sm">Proteção total Mercado Pago em cada clique.</p>
-                </div>
+            </div>
+        </section>
+
+        <!-- BRAND WALL -->
+        <section class="py-16 bg-black overflow-hidden relative">
+            <div class="marquee flex items-center gap-16 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <span class="font-tech text-3xl font-bold">NVIDIA</span>
+                <span class="font-tech text-3xl font-bold">INTEL</span>
+                <span class="font-tech text-3xl font-bold">AMD</span>
+                <span class="font-tech text-3xl font-bold">ASUS</span>
+                <span class="font-tech text-3xl font-bold">MSI</span>
+                <span class="font-tech text-3xl font-bold">LOGITECH</span>
+                <span class="font-tech text-3xl font-bold">RAZER</span>
+                <span class="font-tech text-3xl font-bold">CORSAIR</span>
+                <span class="font-tech text-3xl font-bold">SAMSUNG</span>
+                <span class="font-tech text-3xl font-bold">KINGSTON</span>
+                <span class="font-tech text-3xl font-bold">NVIDIA</span>
+                <span class="font-tech text-3xl font-bold">INTEL</span>
+                <span class="font-tech text-3xl font-bold">AMD</span>
+                <span class="font-tech text-3xl font-bold">ASUS</span>
+                <span class="font-tech text-3xl font-bold">MSI</span>
+                <span class="font-tech text-3xl font-bold">LOGITECH</span>
+                <span class="font-tech text-3xl font-bold">RAZER</span>
+                <span class="font-tech text-3xl font-bold">CORSAIR</span>
             </div>
         </section>
 
@@ -181,15 +198,22 @@
             <div class="container mx-auto px-6">
                 <div class="flex flex-col lg:flex-row justify-between items-center mb-16 gap-8">
                     <div class="text-center lg:text-left">
-                        <h2 class="text-4xl md:text-6xl font-tech font-bold mb-4">Equipamento de <span class="text-neon-blue">Missão</span></h2>
-                        <p class="text-slate-400">Encontre o hardware ideal para seu workflow.</p>
+                        <h2 class="text-4xl md:text-6xl font-tech font-bold mb-4">Selecione seu <span class="text-neon-blue">Arsenal</span></h2>
+                        <p class="text-slate-400">Clique para conferir as melhores ofertas no Mercado Livre.</p>
                     </div>
-                    <div class="flex flex-col gap-4 items-center lg:items-end">
+                    <div class="flex flex-col gap-6 items-center lg:items-end">
                         <div id="category-filters" class="flex flex-wrap gap-3 justify-center">
                             <button onclick="setCategory('TODOS')" data-cat="TODOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest bg-neon-blue text-slate-950 transition-all hover:scale-105 active:scale-95">TODOS</button>
                             <button onclick="setCategory('NOTEBOOKS')" data-cat="NOTEBOOKS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40">NOTEBOOKS</button>
-                            <button onclick="setCategory('COMPUTADORES')" data-cat="COMPUTADORES" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40">COMPUTADORES</button>
-                            <button onclick="setCategory('PERIFERICOS')" data-cat="PERIFERICOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40">PERIFERICOS</button>
+                            <button onclick="setCategory('COMPUTADORES')" data-cat="COMPUTADORES" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40">MÁQUINAS</button>
+                            <button onclick="setCategory('PERIFERICOS')" data-cat="PERIFERICOS" class="cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40">SETUP</button>
+                        </div>
+                        
+                        <div id="sub-category-filters" class="hidden flex flex-wrap gap-2 justify-center transition-all">
+                            <button onclick="setSubCategory('MOUSE')" data-sub="MOUSE" class="sub-btn px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] glass text-slate-500 hover:text-white transition-all">Mouses</button>
+                            <button onclick="setSubCategory('TECLADO')" data-sub="TECLADO" class="sub-btn px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] glass text-slate-500 hover:text-white transition-all">Teclados</button>
+                            <button onclick="setSubCategory('MONITOR')" data-sub="MONITOR" class="sub-btn px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] glass text-slate-500 hover:text-white transition-all">Monitores</button>
+                            <button onclick="setSubCategory('PLACA')" data-sub="PLACA" class="sub-btn px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] glass text-slate-500 hover:text-white transition-all">Placas de Vídeo</button>
                         </div>
                     </div>
                 </div>
@@ -200,38 +224,161 @@
             </div>
         </section>
 
-        <!-- ECOSSISTEMA -->
-        <section class="py-24 border-t border-white/5 bg-slate-950/50">
+        <!-- HARDWARE GUIDES -->
+        <section id="guias" class="py-24 bg-slate-900/30 scroll-mt-24">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-tech font-bold mb-4 uppercase">Ecossistema <span class="text-neon-blue">TechCore</span></h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="glass p-8 rounded-3xl text-center glow-blue group cursor-pointer transition-all">
-                        <i data-lucide="code" class="text-neon-blue mb-4 w-8 h-8 mx-auto transition-transform group-hover:scale-125 duration-500"></i>
-                        <h4 class="text-xl font-tech font-bold mb-2 group-hover:text-neon-blue transition-colors">BYTEFLOW</h4>
-                        <p class="text-slate-500 text-sm">Agência de desenvolvimento de alta performance.</p>
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-4xl font-tech font-bold mb-8">Guia de Compra <span class="text-neon-blue">2024</span></h2>
+                        <div class="space-y-6">
+                            <div class="glass p-6 rounded-2xl border-l-4 border-neon-blue">
+                                <h4 class="font-bold text-lg mb-2">Processadores (CPU)</h4>
+                                <p class="text-slate-400 text-sm">Para gaming, priorize frequências altas (GHz). Para render e stream, priorize número de núcleos (Cores/Threads).</p>
+                            </div>
+                            <div class="glass p-6 rounded-2xl border-l-4 border-neon-green">
+                                <h4 class="font-bold text-lg mb-2">Placas de Vídeo (GPU)</h4>
+                                <p class="text-slate-400 text-sm">Foque em VRAM (8GB+) se você joga em 1440p ou 4K. O DLSS/FSR é seu melhor amigo em hardware de entrada.</p>
+                            </div>
+                            <div class="glass p-6 rounded-2xl border-l-4 border-purple-500">
+                                <h4 class="font-bold text-lg mb-2">Memória RAM</h4>
+                                <p class="text-slate-400 text-sm">O padrão atual é 16GB. Para multitarefa pesada e desenvolvimento, considere o upgrade para 32GB DDR5.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="glass p-8 rounded-3xl text-center glow-blue group cursor-pointer transition-all">
-                        <i data-lucide="globe" class="text-neon-green mb-4 w-8 h-8 mx-auto transition-transform group-hover:scale-125 duration-500"></i>
-                        <h4 class="text-xl font-tech font-bold mb-2 group-hover:text-neon-green transition-colors">CODEPULSE</h4>
-                        <p class="text-slate-500 text-sm">Notícias e insights sobre o futuro da programação.</p>
-                    </div>
-                    <div class="glass p-8 rounded-3xl text-center glow-blue group cursor-pointer transition-all">
-                        <i data-lucide="layers" class="text-purple-400 mb-4 w-8 h-8 mx-auto transition-transform group-hover:scale-125 duration-500"></i>
-                        <h4 class="text-xl font-tech font-bold mb-2 group-hover:text-purple-400 transition-colors">DEVSPHERE</h4>
-                        <p class="text-slate-500 text-sm">Comunidade brasileira de desenvolvedores.</p>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800" class="rounded-3xl shadow-2xl" alt="Guia Hardware">
+                        <div class="absolute -bottom-8 -left-8 glass p-8 rounded-2xl hidden md:block">
+                            <div class="text-neon-blue font-tech text-3xl font-bold">144 FPS+</div>
+                            <div class="text-xs text-slate-500 uppercase">Nosso padrão mínimo de teste</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- FAQ SECTION -->
+        <section class="py-24 border-t border-white/5">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-3xl font-tech font-bold mb-12 text-center">Perguntas <span class="text-neon-blue">Frequentes</span></h2>
+                <div class="space-y-4">
+                    <details class="glass p-6 rounded-2xl cursor-pointer group">
+                        <summary class="font-bold list-none flex justify-between items-center">
+                            Os links de compra são seguros?
+                            <i data-lucide="plus" class="w-5 h-5 group-open:rotate-45 transition-transform"></i>
+                        </summary>
+                        <p class="text-slate-500 mt-4 text-sm leading-relaxed">Sim. Utilizamos a infraestrutura oficial do Mercado Livre. Todas as transações são protegidas pelo programa Compra Garantida.</p>
+                    </details>
+                    <details class="glass p-6 rounded-2xl cursor-pointer group">
+                        <summary class="font-bold list-none flex justify-between items-center">
+                            Como é feita a curadoria dos produtos?
+                            <i data-lucide="plus" class="w-5 h-5 group-open:rotate-45 transition-transform"></i>
+                        </summary>
+                        <p class="text-slate-500 mt-4 text-sm leading-relaxed">Nossa equipe analisa diariamente benchmarks, avaliações de compradores reais e histórico de preços para garantir que você veja apenas o melhor custo-benefício disponível.</p>
+                    </details>
+                    <details class="glass p-6 rounded-2xl cursor-pointer group">
+                        <summary class="font-bold list-none flex justify-between items-center">
+                            Posso pedir uma indicação personalizada?
+                            <i data-lucide="plus" class="w-5 h-5 group-open:rotate-45 transition-transform"></i>
+                        </summary>
+                        <p class="text-slate-500 mt-4 text-sm leading-relaxed">Em breve lançaremos nossa ferramenta de IA "CoreConsult" que montará setups baseados exatamente no seu orçamento e objetivo profissional.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ECOSSISTEMA COM FOTOS -->
+        <section id="ecossistema" class="py-24 border-t border-white/5 bg-slate-950/50 scroll-mt-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-neon-blue text-xs font-black tracking-widest uppercase mb-4 block">Nossa Rede</span>
+                    <h2 class="text-3xl md:text-5xl font-tech font-bold mb-4 uppercase">Explorar o <span class="text-neon-blue">Ecossistema</span></h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto">Conheça nossos outros projetos e comunidades dedicadas à tecnologia e inovação.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- BYTEFLOW -->
+                    <a href="#" class="glass p-4 rounded-[2.5rem] flex flex-col glow-blue group transition-all overflow-hidden border border-white/5">
+                        <div class="relative h-64 w-full mb-6 overflow-hidden rounded-[2rem]">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800" alt="ByteFlow" class="w-full h-full object-cover img-zoom">
+                            <div class="absolute bottom-6 left-6 z-20">
+                                <span class="text-[10px] font-black bg-neon-blue text-slate-950 px-3 py-1 rounded-full uppercase tracking-tighter">Agência Web</span>
+                            </div>
+                        </div>
+                        <div class="px-4 pb-4">
+                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-neon-blue transition-colors">BYTEFLOW</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Engenharia de software e design de interfaces para startups de alto crescimento.</p>
+                        </div>
+                    </a>
+
+                    <!-- CODEPULSE -->
+                    <a href="#" class="glass p-4 rounded-[2.5rem] flex flex-col glow-blue group transition-all overflow-hidden border border-white/5">
+                        <div class="relative h-64 w-full mb-6 overflow-hidden rounded-[2rem]">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800" alt="CodePulse" class="w-full h-full object-cover img-zoom">
+                            <div class="absolute bottom-6 left-6 z-20">
+                                <span class="text-[10px] font-black bg-neon-green text-slate-950 px-3 py-1 rounded-full uppercase tracking-tighter">Tech News</span>
+                            </div>
+                        </div>
+                        <div class="px-4 pb-4">
+                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-neon-green transition-colors">CODEPULSE</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">O pulso do amanhã. Artigos profundos sobre IA, Hardwares e o futuro da Web.</p>
+                        </div>
+                    </a>
+
+                    <!-- DEVSPHERE -->
+                    <a href="#" class="glass p-4 rounded-[2.5rem] flex flex-col glow-blue group transition-all overflow-hidden border border-white/5">
+                        <div class="relative h-64 w-full mb-6 overflow-hidden rounded-[2rem]">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="DevSphere" class="w-full h-full object-cover img-zoom">
+                            <div class="absolute bottom-6 left-6 z-20">
+                                <span class="text-[10px] font-black bg-purple-500 text-slate-950 px-3 py-1 rounded-full uppercase tracking-tighter">Comunidade</span>
+                            </div>
+                        </div>
+                        <div class="px-4 pb-4">
+                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-purple-400 transition-colors">DEVSPHERE</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Conectando mentes brilhantes. Workshops, networking e repositórios exclusivos.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- FOOTER -->
-    <footer class="py-12 bg-black text-center text-slate-600 text-xs uppercase tracking-widest border-t border-white/5">
+    <footer class="py-12 bg-black border-t border-white/5">
         <div class="container mx-auto px-6">
-            <p class="mb-4">&copy; 2024 TECHCORE LABS • TODOS OS DIREITOS RESERVADOS</p>
-            <p>Participamos do Programa de Afiliados do Mercado Livre.</p>
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-2">
+                    <a href="#" class="font-tech text-2xl font-bold tracking-tighter mb-6 block">
+                        TECH<span class="text-neon-blue">CORE</span>
+                    </a>
+                    <p class="text-slate-500 text-sm max-w-md leading-relaxed">
+                        A TechCore é um laboratório de curadoria tecnológica. Nosso compromisso é com a transparência e a performance extrema, ajudando o público brasileiro a encontrar o hardware ideal sem complicações.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase text-xs tracking-widest">Navegação</h5>
+                    <ul class="space-y-4 text-slate-500 text-sm">
+                        <li><a href="#" onclick="navigateTo('INICIO', event)" class="hover:text-neon-blue transition-colors">Início</a></li>
+                        <li><a href="#produtos" class="hover:text-neon-blue transition-colors">Catálogo</a></li>
+                        <li><a href="#guias" class="hover:text-neon-blue transition-colors">Guias de Compra</a></li>
+                        <li><a href="#ecossistema" class="hover:text-neon-blue transition-colors">Ecossistema</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6 uppercase text-xs tracking-widest">Legal</h5>
+                    <ul class="space-y-4 text-slate-500 text-sm">
+                        <li><a href="#" class="hover:text-neon-blue transition-colors">Termos de Uso</a></li>
+                        <li><a href="#" class="hover:text-neon-blue transition-colors">Política de Privacidade</a></li>
+                        <li><a href="#" class="hover:text-neon-blue transition-colors">Afiliados</a></li>
+                        <li><a href="#" class="hover:text-neon-blue transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 text-center text-slate-600 text-xs uppercase tracking-widest">
+                <p class="mb-4">&copy; 2024 TECHCORE LABS • TODOS OS DIREITOS RESERVADOS</p>
+                <p>Participamos do Programa de Afiliados do Mercado Livre. Todos os links são auditados para sua segurança.</p>
+            </div>
         </div>
     </footer>
 
@@ -239,36 +386,100 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         const products = [
-            { image: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&q=80&w=600", title: "PC Gamer Dominator V1", desc: "RTX 4070 Ti, Intel i7-14700K, 32GB RAM DDR5.", price: "R$ 8.490", category: 'COMPUTADORES' },
-            { image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600", title: "PC Elite 4K Beast", desc: "RTX 4090, i9-14900KS, Watercooling Custom.", price: "R$ 18.490", category: 'COMPUTADORES' },
-            { image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=600", title: "Notebook Pro Elite 16\"", desc: "i9 13th Gen, RTX 4060, Tela 4K OLED.", price: "R$ 6.199", category: 'NOTEBOOKS' },
-            { image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&q=80&w=600", title: "Laptop Gamer Nitro Z", desc: "Ryzen 9, RTX 4080 Mobile, Tela 165Hz.", price: "R$ 12.500", category: 'NOTEBOOKS' },
-            { image: "https://images.unsplash.com/photo-1527814732934-94a85e4839d9?auto=format&fit=crop&q=80&w=600", title: "Mouse Precision Elite", desc: "26.000 DPI, Sensor Óptico de Próxima Geração.", price: "R$ 490", category: 'PERIFERICOS', sub: 'MOUSE' },
-            { image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600", title: "Teclado Mecânico Pro X", desc: "Switches Hot-swap, RGB Chroma, Alumínio.", price: "R$ 850", category: 'PERIFERICOS', sub: 'TECLADO' },
-            { image: "https://images.unsplash.com/photo-1558977551-d0df18930994?auto=format&fit=crop&q=80&w=600", title: "Monitor Curvo 165Hz", desc: "27 polegadas, 1ms, Cores sRGB 120%.", price: "R$ 1.290", category: 'PERIFERICOS', sub: 'MONITOR' },
-            { image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600", title: "RTX 4080 Super", desc: "Tecnologia DLSS 3, 16GB GDDR6X.", price: "R$ 7.200", category: 'PERIFERICOS', sub: 'PLACA' }
+            // COMPUTADORES
+            { image: "https://estore.vertexhk.com/wp-content/uploads/2025/10/lenovo-ideapad-slim3-14irh10r-intel-grey-04-800x800.jpg", title: "Notebook Lenovo IdeaPad Slim 3", desc: "RTX 4070 Ti, Intel i7-14700K, 32GB RAM DDR5, SSD 2TB NVMe Gen4.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1iwuABR" },
+            { image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600", title: "PC Elite 4K Beast", desc: "RTX 4090, i9-14900KS, Watercooling Custom. Performance extrema.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/pc-gamer-rtx-4090" },
+            { image: "https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&q=80&w=600", title: "Setup Office Pro", desc: "Processador i5, 16GB RAM, SSD 1TB. Estabilidade e velocidade profissional.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/pc-i5-16gb-ssd-1tb" },
+            { image: "https://images.unsplash.com/photo-1593640495253-23196b27a05f?auto=format&fit=crop&q=80&w=600", title: "Workstation Pro X", desc: "Ryzen Threadripper PRO, 64GB RAM ECC, Dual RTX 4000. Foco em render.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/workstation-ryzen-threadripper" },
+            { image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600", title: "Mini PC Nano Tech", desc: "i7 Ultra, 32GB RAM, 1TB SSD. Potência massiva em tamanho compacto.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/mini-pc-i7-32gb" },
+            { image: "https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?auto=format&fit=crop&q=80&w=600", title: "Streamer Station V2", desc: "i9 14th Gen, Placa de captura 4K, 64GB RAM. Feito para Live.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/pc-streamer-i9" },
+            { image: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?auto=format&fit=crop&q=80&w=600", title: "Gamer Entry Level", desc: "RTX 3060, i5-12400F, 16GB RAM. Perfeito para 1080p competitivo.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/pc-gamer-rtx-3060" },
+            { image: "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&q=80&w=600", title: "Workstation AI Dev", desc: "RTX 4080 Super, 64GB RAM, Otimizada para Machine Learning.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/workstation-rtx-4080-super" },
+
+            // NOTEBOOKS
+            { image: "https://cdn.akakce.com/z/lenovo/lenovo-ideapad-slim-3-15irh10-83k100q0tr-i5-13420h-8-gb-256-gb-ssd-uhd-graphics-15-3-wuxga-notebook.jpg", title: "Notebook Lenovo IdeaPad Slim 3", desc: "Intel i5-13420H, RAM 8GB, Tela 15.3 FHD, Bateria 3 células 50Wh", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/1iwuABR" },
+            { image: "https://tauretcomputadores.com/images/products/Product_202505231037361639267727.PNG-2.webp", title: "Dell Inspiron 15", desc: "Intel Core i5, RAM 8GB, Full HD de 15.6", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/2jDoKaU" },
+            { image: "https://avatars.mds.yandex.net/get-mpic/12260097/2a00000195f55ea1e3cbfcabb0eab3b1d4f8/orig", title: "Samsung Book4", desc: "Intel® Inside U300, RAM 8GB, Full HD LED IPS.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/1CfurQZ" },
+            { image: "https://www.pcplanet.ru/public_files/products/7f/88/7f88f9cdbc1bf812184a5f910341bf66/original.jpg", title: "Notebook Acer Aspire 5", desc: "AMD Ryzen 7 5700U, RAM 8 GB. Full HD LED IPS", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/2n8TQNu" },
+            { image: "https://www.tradeinn.com/f/14025/140251211_8/asus-%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA-vivobook-pro-15-oled-d6500qc-l1132w-15.6-r5-5600h-16gb-512gb-ssd-rtx-3050.webp", title: "ASUS Vivobook Pro 15", desc: "Intel Core i5, RAM 8 GB, Tela Full HD.", category: 'NOTEBOOKS', link: "https://lista.mercadolivre.com.br/notebook-creator-i7-32gb" },
+            { image: "https://catalog.livelo.com.br/PTF%2FPRD3873137%2FSKU4800178%2FMEDIUM%2F396519117%2FNotebook-Gamer-Acer-Nitro-V15-com-Intel-Core-i7-de-13-gerao-Nvidia-GeForce-RTX3050-512GB-SSD-16GB-RAM-Tela-156-e-Linux-Gutta--ANV155173E9-Preto.jpeg", title: "Notebook Acer Nitro V15", desc: "Intel Core i5, RAM 8GB, RTX 3050. Full HD IPS.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/1MhZaud" },
+            { image: "https://vaiobr.vtexassets.com/arquivos/ids/163549/01_NOTEBOOK_VAIO_FE16_2025_LINUX_1000X1000.jpg?v=638877535245600000", title: "Notebook Vaio Fe16", desc: "Ryzen 7. 16GB RAM, Tela 16 Full HD.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/19Bro2k" },
+            { image: "https://c1.neweggimages.com/productimage/nb1280/1TS-000E-18JS3-24.jpg", title: "Notebook Lenovo LOQ", desc: "RTX 3050, Intel Core i5, RAM 16 GB.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/2S8fKB9" },
+
+            // PERIFERICOS - MOUSE
+            { image: "https://images.unsplash.com/photo-1527814732934-94a85e4839d9?auto=format&fit=crop&q=80&w=600", title: "Mouse Precision Elite", desc: "26.000 DPI, Sensor Pro, 60g. O melhor do mercado.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-sensor-pro-26000-dpi" },
+            { image: "https://images.unsplash.com/photo-1615663248861-2446a855502a?auto=format&fit=crop&q=80&w=600", title: "Mouse Gamer RGB Neon", desc: "Sensor estável, 8000 DPI, cabo trançado e RGB dinâmico.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-rgb-8000-dpi" },
+            { image: "https://images.unsplash.com/photo-1563297007-0686b7003af7?auto=format&fit=crop&q=80&w=600", title: "Mouse Wireless Ultralight", desc: "2.4GHz sem lag, bateria infinita. Design Honeycomb.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-wireless-ultraleve" },
+            { image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=600", title: "Mouse Ergo Vertical", desc: "Ergonomia absoluta para jornadas longas de trabalho.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-ergonomico-vertical" },
+            { image: "https://images.unsplash.com/photo-1527860299272-3abc6230f69f?auto=format&fit=crop&q=80&w=600", title: "Mouse MMO Master", desc: "12 botões laterais para macros ilimitadas.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-mmo-12-botoes" },
+            { image: "https://images.unsplash.com/photo-1551135020-39e4ca508d9e?auto=format&fit=crop&q=80&w=600", title: "Mouse Trackball Pro", desc: "Controle cirúrgico sem movimentar o pulso.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-trackball-wireless" },
+            { image: "https://images.unsplash.com/photo-1629429464245-48749429398a?auto=format&fit=crop&q=80&w=600", title: "Mouse Silent Click", desc: "Silêncio total para produtividade em qualquer lugar.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-silent-click-wireless" },
+            { image: "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&q=80&w=600", title: "Mouse White Edition", desc: "Performance de elite com acabamento premium em branco.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-branco-performance" },
+
+            // PERIFERICOS - TECLADO
+            { image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600", title: "Teclado Mecânico Pro X", desc: "Switches Hot-swap, RGB Chroma, Estrutura de Alumínio.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-rgb-hot-swap" },
+            { image: "https://images.unsplash.com/photo-1616410224348-5117ad7f7313?auto=format&fit=crop&q=80&w=600", title: "Teclado RGB Stealth", desc: "Switches silenciosos, wireless tri-mode e design clean.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-silencioso-wireless" },
+            { image: "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&q=80&w=600", title: "Teclado Custom G60", desc: "Formato 60%, switches lubrificados, entusiasta.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-60-por-cento" },
+            { image: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&q=80&w=600", title: "Teclado Low Profile", desc: "Mecânico ultra-fino para agilidade de digitação.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-low-profile" },
+            { image: "https://images.unsplash.com/photo-1618384800394-22121990c092?auto=format&fit=crop&q=80&w=600", title: "Teclado Bluetooth Multi", desc: "Pareie até 3 aparelhos. Estilo clássico retro.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-bluetooth-multidispositivo" },
+            { image: "https://images.unsplash.com/photo-1626956083953-27593bc14f6b?auto=format&fit=crop&q=80&w=600", title: "Teclado Ergonômico Split", desc: "Dividido para postura natural. Máximo conforto.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-ergonomico-split" },
+            { image: "https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&q=80&w=600", title: "Teclado Mac Edition", desc: "Layout Apple nativo com toque tátil mecânico.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-para-mac" },
+            { image: "https://images.unsplash.com/photo-1587829741301-dc798b83aca2?auto=format&fit=crop&q=80&w=600", title: "Teclado TKL Competitive", desc: "Focado em e-sports, sem numérico para mais espaço.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-tkl" },
+
+            // PERIFERICOS - MONITOR
+            { image: "https://images.unsplash.com/photo-1558977551-d0df18930994?auto=format&fit=crop&q=80&w=600", title: "Monitor Curvo 165Hz", desc: "27 polegadas, 1ms, sRGB 120%. Imersão total.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-curvo-165hz-27" },
+            { image: "https://images.unsplash.com/photo-1527860299272-3abc6230f69f?auto=format&fit=crop&q=80&w=600", title: "Monitor Ultrawide 34\"", desc: "1440p, 144Hz. Perfeito para multitarefa.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-ultrawide-34-polegadas" },
+            { image: "https://images.unsplash.com/photo-1547119957-637f8679db1e?auto=format&fit=crop&q=80&w=600", title: "Monitor 4K Studio 32\"", desc: "IPS 99% Adobe RGB. Cor para profissionais.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-4k-ips-32-polegadas" },
+            { image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=600", title: "Monitor OLED 240Hz", desc: "A imagem mais rápida e nítida do mundo gamer.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-oled-240hz" },
+            { image: "https://images.unsplash.com/photo-1586210579191-33b45e38fa2c?auto=format&fit=crop&q=80&w=600", title: "Monitor Vertical Ergo", desc: "Pivotante 90 graus. O favorito dos devs.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-pivoting-vertical" },
+            { image: "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?auto=format&fit=crop&q=80&w=600", title: "Monitor Portátil 15.6\"", desc: "USB-C, leve e fino para trabalho remoto.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-portatil-usb-c" },
+            { image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&q=80&w=600", title: "Monitor 360Hz Esports", desc: "Taxa de elite para performance competitiva.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-360hz-gamer" },
+            { image: "https://images.unsplash.com/photo-1616763355603-9755a640a287?auto=format&fit=crop&q=80&w=600", title: "Monitor QLED 2K 27\"", desc: "Brilho intenso e cores vibrantes HDR.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-qled-2k-hdr" },
+
+            // PERIFERICOS - PLACA DE VÍDEO
+            { image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600", title: "RTX 4080 Super", desc: "DLSS 3, 16GB GDDR6X. Gráficos de elite.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4080-super" },
+            { image: "https://images.unsplash.com/photo-1632759162353-1999aa29824b?auto=format&fit=crop&q=80&w=600", title: "RTX 4090 Extreme", desc: "24GB GDDR6X. Poder absoluto sem limites.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4090" },
+            { image: "https://images.unsplash.com/photo-1587202392491-e0e0c5963920?auto=format&fit=crop&q=80&w=600", title: "RTX 4070 Dual OC", desc: "Perfeita para 1440p com máxima eficiência.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4070-dual" },
+            { image: "https://images.unsplash.com/photo-1591489383431-70233479698d?auto=format&fit=crop&q=80&w=600", title: "RX 7900 XTX 24GB", desc: "A topo de linha AMD para performance pura.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rx-7900-xtx" },
+            { image: "https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&q=80&w=600", title: "RTX 4060 Ti Master", desc: "Ideal para 1080p competitivo ultra.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4060-ti" },
+            { image: "https://images.unsplash.com/photo-1544265852-a41581cab49a?auto=format&fit=crop&q=80&w=600", title: "RTX 3060 Vision OC", desc: "Estilo premium em branco e performance estável.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-3060-vision-white" },
+            { image: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=600", title: "RX 7800 XT Speed", desc: "16GB VRAM para texturas pesadas e 4K.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rx-7800-xt" },
+            { image: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=600", title: "Arc A770 16GB", desc: "Inovação Intel com suporte AV1 nativo.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/intel-arc-a770-16gb" }
         ];
 
         let currentCat = 'TODOS';
+        let currentSubCat = 'MOUSE';
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
-            const filtered = currentCat === 'TODOS' ? products : products.filter(p => p.category === currentCat);
+            
+            let filtered = products;
+
+            if (currentCat !== 'TODOS') {
+                filtered = filtered.filter(p => p.category === currentCat);
+                if (currentCat === 'PERIFERICOS') {
+                    filtered = filtered.filter(p => p.sub === currentSubCat);
+                }
+            } else {
+                filtered = products.slice(0, 12);
+            }
             
             filtered.forEach(p => {
-                const search = `https://lista.mercadolivre.com.br/${encodeURIComponent(p.title)}`;
                 grid.innerHTML += `
-                    <div class="glass p-5 rounded-3xl flex flex-col glow-blue group">
-                        <div class="overflow-hidden rounded-2xl mb-4 h-48">
-                            <img src="${p.image}" class="w-full h-full object-cover img-zoom">
+                    <div class="glass p-5 rounded-3xl flex flex-col glow-blue group animate-in fade-in zoom-in duration-500">
+                        <div class="overflow-hidden rounded-2xl mb-4 h-48 bg-slate-900/50">
+                            <img src="${p.image}" class="w-full h-full object-cover img-zoom" loading="lazy">
                         </div>
                         <h3 class="font-tech font-bold text-lg mb-2 group-hover:text-neon-blue transition-colors">${p.title}</h3>
                         <p class="text-slate-500 text-xs mb-6 flex-grow">${p.desc}</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-neon-green font-bold text-xl">${p.price}</span>
+                        
+                        <div class="mt-auto">
+                            <a href="${p.link}" target="_blank" class="bg-neon-blue hover:bg-sky-400 text-slate-950 p-3 rounded-xl text-center text-xs font-black transition-all transform hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center gap-2 w-full">
+                                VER NO MERCADO LIVRE
+                                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                            </a>
                         </div>
-                        <a href="${search}" target="_blank" class="bg-white/5 hover:bg-neon-blue hover:text-slate-950 p-3 rounded-xl text-center text-xs font-black transition-all transform hover:scale-105 active:scale-95 shadow-lg">COMPRAR NO ML</a>
                     </div>
                 `;
             });
@@ -277,11 +488,35 @@
 
         function setCategory(cat) {
             currentCat = cat;
+            const subFilterContainer = document.getElementById('sub-category-filters');
+            
+            if (cat === 'PERIFERICOS') {
+                subFilterContainer.classList.remove('hidden');
+                subFilterContainer.classList.add('flex');
+            } else {
+                subFilterContainer.classList.add('hidden');
+                subFilterContainer.classList.remove('flex');
+            }
+
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 if(btn.dataset.cat === cat) {
                     btn.className = "cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest bg-neon-blue text-slate-950 transition-all hover:scale-105 active:scale-95";
                 } else {
                     btn.className = "cat-btn px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest glass text-slate-400 transition-all hover:text-white hover:border-neon-blue/40";
+                }
+            });
+            
+            if (cat === 'PERIFERICOS') setSubCategory(currentSubCat);
+            else renderProducts();
+        }
+
+        function setSubCategory(sub) {
+            currentSubCat = sub;
+            document.querySelectorAll('.sub-btn').forEach(btn => {
+                if(btn.dataset.sub === sub) {
+                    btn.className = "sub-btn px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] bg-white text-slate-950 transition-all hover:scale-105";
+                } else {
+                    btn.className = "sub-btn px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] glass text-slate-500 hover:text-white transition-all";
                 }
             });
             renderProducts();
@@ -296,6 +531,10 @@
                 setCategory(target);
                 document.getElementById('produtos').scrollIntoView({behavior: 'smooth'});
             }
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
         }
 
         function toggleMobileMenu(show) {
