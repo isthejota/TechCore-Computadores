@@ -46,6 +46,12 @@
         .bg-neon-blue {
             background-color: var(--neon-blue);
         }
+        .bg-neon-green {
+            background-color: var(--neon-green);
+        }
+        .bg-neon-purple {
+            background-color: #A855F7;
+        }
         .hero-gradient {
             background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent),
                         radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.1), transparent);
@@ -84,7 +90,7 @@
             <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-8 items-center">
                 <a href="#" onclick="navigateTo('INICIO', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Início</a>
-                <a href="#" onclick="scrollToSection('guias')" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Guias</a>
+                <a href="#" onclick="scrollToSection('guias', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Guias</a>
                 <a href="#" onclick="navigateTo('COMPUTADORES', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Máquinas</a>
                 <a href="#" onclick="navigateTo('PERIFERICOS', event)" class="text-xs font-bold hover:text-neon-blue transition-all uppercase tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-neon-blue after:transition-all hover:after:w-full">Setup</a>
             </nav>
@@ -108,7 +114,7 @@
 
         <nav class="flex flex-col items-center space-y-10 px-6">
             <a href="#" onclick="navigateTo('INICIO', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Início</a>
-            <a href="#" onclick="scrollToSection('guias'); toggleMobileMenu(false);" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Guias</a>
+            <a href="#" onclick="scrollToSection('guias', event); toggleMobileMenu(false);" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Guias</a>
             <a href="#" onclick="navigateTo('COMPUTADORES', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Computadores</a>
             <a href="#" onclick="navigateTo('PERIFERICOS', event)" class="text-2xl font-tech uppercase tracking-widest text-white hover:text-neon-blue transition-all font-bold">Setup</a>
             <button onclick="navigateTo('TODOS', event)" class="mt-10 px-12 py-6 bg-neon-blue text-[#020617] font-black rounded-2xl uppercase tracking-tighter text-lg shadow-[0_0_40px_rgba(56,189,248,0.4)] active:scale-95 transition-transform">
@@ -295,48 +301,48 @@
                     <p class="text-slate-500 max-w-2xl mx-auto">Conheça nossos outros projetos e comunidades dedicadas à tecnologia e inovação.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- BYTEFLOW -->
+                    <!-- BRSMART -->
                     <a href="#" class="glass p-4 rounded-[2.5rem] flex flex-col glow-blue group transition-all overflow-hidden border border-white/5">
                         <div class="relative h-64 w-full mb-6 overflow-hidden rounded-[2rem]">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800" alt="ByteFlow" class="w-full h-full object-cover img-zoom">
+                            <img src="https://i.imgur.com/4kiMZOE.png" alt="Smart Home" class="w-full h-full object-cover img-zoom">
                             <div class="absolute bottom-6 left-6 z-20">
-                                <span class="text-[10px] font-black bg-neon-blue text-slate-950 px-3 py-1 rounded-full uppercase tracking-tighter">Agência Web</span>
+                                <span class="text-[10px] font-black bg-neon-blue text-slate-950 px-4 py-1.5 rounded-full uppercase tracking-tighter">Smart Home</span>
                             </div>
                         </div>
                         <div class="px-4 pb-4">
-                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-neon-blue transition-colors">BYTEFLOW</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed">Engenharia de software e design de interfaces para startups de alto crescimento.</p>
+                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-neon-blue transition-colors">BR Smart</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Descubra como a tecnologia pode transformar sua rotina, trazendo economia e praticidade para o seu dia a dia.</p>
                         </div>
                     </a>
 
-                    <!-- CODEPULSE -->
+                    <!-- MOBITECH -->
                     <a href="#" class="glass p-4 rounded-[2.5rem] flex flex-col glow-blue group transition-all overflow-hidden border border-white/5">
                         <div class="relative h-64 w-full mb-6 overflow-hidden rounded-[2rem]">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800" alt="CodePulse" class="w-full h-full object-cover img-zoom">
+                            <img src="https://i.imgur.com/zre7Bbo.png" alt="Curadoria Mobile" class="w-full h-full object-cover img-zoom">
                             <div class="absolute bottom-6 left-6 z-20">
-                                <span class="text-[10px] font-black bg-neon-green text-slate-950 px-3 py-1 rounded-full uppercase tracking-tighter">Tech News</span>
+                                <span class="text-[10px] font-black bg-neon-green text-slate-950 px-4 py-1.5 rounded-full uppercase tracking-tighter">Curadoria Mobile</span>
                             </div>
                         </div>
                         <div class="px-4 pb-4">
-                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-neon-green transition-colors">CODEPULSE</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed">O pulso do amanhã. Artigos profundos sobre IA, Hardwares e o futuro da Web.</p>
+                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-neon-green transition-colors">MobiTech</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Encontre o dispositivo perfeito para o seu dia a dia. Performance, câmeras incríveis e os melhores preços do Mercado Livre.</p>
                         </div>
                     </a>
 
-                    <!-- DEVSPHERE -->
+                    <!-- BRINCASMART -->
                     <a href="#" class="glass p-4 rounded-[2.5rem] flex flex-col glow-blue group transition-all overflow-hidden border border-white/5">
                         <div class="relative h-64 w-full mb-6 overflow-hidden rounded-[2rem]">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="DevSphere" class="w-full h-full object-cover img-zoom">
+                            <img src="https://i.imgur.com/NPtSDBs.png" alt="Brinquedos Inteligentes" class="w-full h-full object-cover img-zoom">
                             <div class="absolute bottom-6 left-6 z-20">
-                                <span class="text-[10px] font-black bg-purple-500 text-slate-950 px-3 py-1 rounded-full uppercase tracking-tighter">Comunidade</span>
+                                <span class="text-[10px] font-black bg-neon-purple text-slate-950 px-4 py-1.5 rounded-full uppercase tracking-tighter">Confiança & Encantamento</span>
                             </div>
                         </div>
                         <div class="px-4 pb-4">
-                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-purple-400 transition-colors">DEVSPHERE</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed">Conectando mentes brilhantes. Workshops, networking e repositórios exclusivos.</p>
+                            <h4 class="text-2xl font-tech font-bold mb-2 group-hover:text-purple-400 transition-colors">BrincaSmart</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Curadoria especializada em brinquedos que estimulam o desenvolvimento real e a alegria de descobrir.</p>
                         </div>
                     </a>
                 </div>
@@ -385,7 +391,7 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        // Array de produtos completo com URLs atualizadas
+        // Array de produtos completo
         const products = [
             // COMPUTADORES
             { image: "https://i.imgur.com/3ILQLIb.png", title: "Ninja Shadow II", desc: "Placa de Vídeo 4GB, Intel Core i5, 16GB RAM, SSD 240GB.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1M9SzK1" },
@@ -418,34 +424,34 @@
             { image: "https://www.techpowerup.com/review/delux-m800-pro-3395/images/title.jpg", title: "Delux M800 Pro", desc: "26.000 DPI, PAW3395, Sem fio.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/2uN3eFi" },
 
             // PERIFERICOS - TECLADO
-            { image: "https://olvit-shop.ru/upload/dev2fun.imagecompress/webp/iblock/56e/06zzei3fk0jm06ws4n8t7490lxot1dyi/08079b6f66e011ee8bd400155d000e0e_54ef6f5766e011ee8bd400155d000e0e.webp", title: "Logitech K120", desc: "Um dos teclados mais vendidos e tradicionais do Mercado Livre, com milhares de vendas.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1g3cKww" },
-            { image: "https://ir.ozone.ru/s3/multimedia-1-n/7546954019.jpg", title: "MonsGeek FUN60", desc: "teclado gamer 60% com switches magnéticos, Rapid Trigger 0,01 mm e polling rate de até 8.000 Hz.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1FxVU2n" },
-            { image: "https://avatars.mds.yandex.net/i?id=993d8f07f91d65b803ac51d2f5c161c592852ebd-4824426-images-thumbs&n=13", title: "Redragon Kumara Pro V2", desc: "Modelo gamer da Redragon com boa presença de vendas e avaliações altas.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/29gvsMi" },
-            { image: "https://ir.ozone.ru/s3/multimedia-1-0/7685271972.jpg", title: "Attack Shark X68", desc: "teclado gamer RGB com teclas mecânicas, iluminação personalizável e conexão USB.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-low-profile" },
-            { image: "https://microless.com/cdn/products/0a2f4403e3d29464390e3f8fbaf8f13a-hi.jpg", title: "TECLADO AULA HERO 68", desc: "polling rate de 8.000Hz, Rapid Trigger ultra preciso, keycaps PBT DoubleShot.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2tbZcgp" },
-            { image: "https://cdn.shopify.com/s/files/1/0280/3931/5529/products/203A6610.jpg?v=1700633294", title: "Teclado Aula F87", desc: "Teclado Aula gamer com retroiluminação RGB e tecnologia antighosting.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1KZz2WZ" },
-            { image: "https://avatars.mds.yandex.net/get-mpic/14331402/2a00000198b0a611fdec3bb64e6f6425b24f/orig", title: "Akko Tac 75", desc: "Akko Tac75 HE magnético 75% com switches AstroAim, Rapid Trigger 0,01mm.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2KcUQme" },
-            { image: "https://m.media-amazon.com/images/I/61BA49bilzL.jpg", title: "Ajazz Ak820", desc: "teclado mecânico compacto 80% com switches táteis, iluminação RGB.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1C1PDyf" },
+            { image: "https://olvit-shop.ru/upload/dev2fun.imagecompress/webp/iblock/56e/06zzei3fk0jm06ws4n8t7490lxot1dyi/08079b6f66e011ee8bd400155d000e0e_54ef6f5766e011ee8bd400155d000e0e.webp", title: "Logitech K120", desc: "Teclado tradicional ultra-resistente.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1g3cKww" },
+            { image: "https://ir.ozone.ru/s3/multimedia-1-n/7546954019.jpg", title: "MonsGeek FUN60", desc: "Teclado gamer 60% com switches magnéticos.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1FxVU2n" },
+            { image: "https://avatars.mds.yandex.net/i?id=993d8f07f91d65b803ac51d2f5c161c592852ebd-4824426-images-thumbs&n=13", title: "Redragon Kumara Pro V2", desc: "Teclado mecânico gamer RGB de alta precisão.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/29gvsMi" },
+            { image: "https://ir.ozone.ru/s3/multimedia-1-0/7685271972.jpg", title: "Attack Shark X68", desc: "Compacto e potente para performance competitiva.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-low-profile" },
+            { image: "https://microless.com/cdn/products/0a2f4403e3d29464390e3f8fbaf8f13a-hi.jpg", title: "TECLADO AULA HERO 68", desc: "Polling rate de 8.000Hz para latência mínima.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2tbZcgp" },
+            { image: "https://cdn.shopify.com/s/files/1/0280/3931/5529/products/203A6610.jpg?v=1700633294", title: "Teclado Aula F87", desc: "TKL Gamer com retroiluminação RGB.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1KZz2WZ" },
+            { image: "https://avatars.mds.yandex.net/get-mpic/14331402/2a00000198b0a611fdec3bb64e6f6425b24f/orig", title: "Akko Tac 75", desc: "Switches magnéticos e Rapid Trigger preciso.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2KcUQme" },
+            { image: "https://m.media-amazon.com/images/I/61BA49bilzL.jpg", title: "Ajazz Ak820", desc: "Teclado mecânico compacto 80% versátil.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1C1PDyf" },
 
             // PERIFERICOS - MONITOR
-            { image: "https://www.lg.com/ee/images/monitorid/md07608220/gallery/medium01.jpg", title: "LG UltraGear", desc: "Ideal para jogos e produtividade com qualidade de imagem superior.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2nyk6S7" },
-            { image: "https://boletando.com/wp-content/uploads/2023/03/ezgif-3-9e38998276.jpg", title: "Samsung Odyssey G30", desc: "Full HD Va, 144Hz. ótimo custo-benefício geral.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/11PX6A5" },
-            { image: "https://a.allegroimg.com/original/11cd04/9308c3f34c2da07e41d655b98d06/Monitor-LED-AOC-24G2U-BK-23-8-IPS-PLS-GAMING", title: "Gamer HERO", desc: "Excelente custo-benefício para jogos e uso diário.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2CrVWYg" },
-            { image: "https://www.pcliquidations.com/images/items/dell-c2423h-23-8-wled-video-conferencing-monitor.jpg", title: "Dell De", desc: "Perfeito para quem faz design, edição e produtividade.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2HpUfbw" },
-            { image: "https://www.mrpc.com.co/wp-content/uploads/2023/09/001-73.jpg", title: "Samsung LS32A600", desc: "Pivotante 90 graus. O favorito dos devs.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2owya8j" },
-            { image: "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/m/c/mcr-hznp27-bl011651610v23.jpg", title: "Mancer Horizon Z2", desc: "monitor 27″ VA FHD com 100 Hz, tempo de resposta de 1 ms e entradas HDMI/VGA para jogos fluídos e visual imersivo.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2ph7Htm" },
-            { image: "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/p/g/pg-ctrs24b-bl0112.jpg", title: "Pichau Centauri", desc: "Taxa de elite para performance competitiva.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/19FLwhc" },
-            { image: "https://avatars.mds.yandex.net/get-mpic/4782842/img_id2272029361396238377.jpeg/orig", title: "Asus TUF Gaming", desc: "Brilho intenso e cores vibrantes HDR.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/1dyVsKc" },
+            { image: "https://www.lg.com/ee/images/monitorid/md07608220/gallery/medium01.jpg", title: "LG UltraGear", desc: "Imagem superior para jogos e design.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2nyk6S7" },
+            { image: "https://boletando.com/wp-content/uploads/2023/03/ezgif-3-9e38998276.jpg", title: "Samsung Odyssey G30", desc: "Full HD 144Hz. Excelente custo-benefício.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/11PX6A5" },
+            { image: "https://a.allegroimg.com/original/11cd04/9308c3f34c2da07e41d655b98d06/Monitor-LED-AOC-24G2U-BK-23-8-IPS-PLS-GAMING", title: "Gamer HERO", desc: "O monitor mais equilibrado para uso diário.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2CrVWYg" },
+            { image: "https://www.pcliquidations.com/images/items/dell-c2423h-23-8-wled-video-conferencing-monitor.jpg", title: "Dell De", desc: "Cores precisas para produtividade pesada.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2HpUfbw" },
+            { image: "https://www.mrpc.com.co/wp-content/uploads/2023/09/001-73.jpg", title: "Samsung LS32A600", desc: "Monitor QHD pivotante para desenvolvedores.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2owya8j" },
+            { image: "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/m/c/mcr-hznp27-bl011651610v23.jpg", title: "Mancer Horizon Z2", desc: "Imersão 27 polegadas com 100Hz.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2ph7Htm" },
+            { image: "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/p/g/pg-ctrs24b-bl0112.jpg", title: "Pichau Centauri", desc: "Performance de elite para e-sports.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/19FLwhc" },
+            { image: "https://avatars.mds.yandex.net/get-mpic/4782842/img_id2272029361396238377.jpeg/orig", title: "Asus TUF Gaming", desc: "Painel HDR de alta fidelidade e durabilidade.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/1dyVsKc" },
 
             // PERIFERICOS - PLACA DE VÍDEO
-            { image: "https://n.cdn.cdek.shopping/images/shopping/d1208caf274041759001381adfdd9e4a.jpg?v=1", title: "RTX 4080 Super", desc: "DLSS 3, 16GB GDDR6X. Gráficos de elite.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2f4wiED" },
-            { image: "https://img.computerunivers.net/cp/images/1000x1000/PI_512638970", title: "RTX 5080", desc: "16GB GDDR6X. Poder absoluto sem limites.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2k9ZKFw" },
-            { image: "https://www.buyerspk.com/cdn/shop/files/zt-d40720h-10m-image08_0_1024x.jpg?v=1712565994", title: "RTX 4070 Dual OC", desc: "Perfeita para 1440p com máxima eficiência.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/1LnYsvH" },
-            { image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/391d0d7a-b5c3-4483-8c28-e1bd3955dbb0.jpg", title: "RX 7900 XTX 24GB", desc: "A topo de linha AMD para performance pura.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2niQnbt" },
-            { image: "https://i.ebayimg.com/images/g/Ol4AAOSw0XBnGK~l/s-l1600.jpg", title: "RTX 4060 Ti", desc: "Ideal para 1080p competitivo ultra.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2y5Bspg" },
-            { image: "https://avatars.mds.yandex.net/i?id=6b7ce694c40f2eeb5c2f27e61078ebfe40e88f7e-5291460-images-thumbs&n=13", title: "RTX 3060 Vision OC", desc: "Estilo premium em branco e performance estável.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/1nQUS2a" },
-            { image: "https://ressi.ru/upload/iblock/1e1/e443o3uc7xahz6ruoo3p97mt2yle7tyq/f8865f75fe7cf83daa2c4deca59aa799.jpg", title: "RX 7600XT ", desc: "16GB VRAM para texturas pesadas e 4K.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/1BeZrPf" },
-            { image: "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/5/6/56isn8mdabcc5.jpg", title: "RTX 5060TI", desc: "Inovação Intel com suporte AV1 nativo.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2TQuKzE" }
+            { image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600", title: "RTX 4080 Super", desc: "DLSS 3, 16GB GDDR6X. Gráficos de elite.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4080-super" },
+            { image: "https://images.unsplash.com/photo-1632759162353-1999aa29824b?auto=format&fit=crop&q=80&w=600", title: "RTX 4090 Extreme", desc: "24GB GDDR6X. Poder absoluto sem limites.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4090" },
+            { image: "https://images.unsplash.com/photo-1591489383431-70233479698d?auto=format&fit=crop&q=80&w=600", title: "RX 7900 XTX 24GB", desc: "A topo de linha AMD para performance pura.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rx-7900-xtx" },
+            { image: "https://images.unsplash.com/photo-1587202392491-e0e0c5963920?auto=format&fit=crop&q=80&w=600", title: "RTX 4070 Dual OC", desc: "Perfeita para 1440p com máxima eficiência.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4070-dual" },
+            { image: "https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&q=80&w=600", title: "RTX 4060 Ti Master", desc: "Ideal para 1080p competitivo ultra.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4060-ti" },
+            { image: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=600", title: "RX 7800 XT Speed", desc: "16GB VRAM para texturas pesadas e 4K.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rx-7800-xt" },
+            { image: "https://images.unsplash.com/photo-1544265852-a41581cab49a?auto=format&fit=crop&q=80&w=600", title: "RTX 3060 Vision OC", desc: "Estilo premium em branco e performance estável.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-3060-vision-white" },
+            { image: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=600", title: "Arc A770 16GB", desc: "Inovação Intel com suporte AV1 nativo.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/intel-arc-a770-16gb" }
         ];
 
         let currentCat = 'TODOS';
@@ -474,7 +480,6 @@
                     filtered = filtered.filter(p => p.sub === currentSubCat);
                 }
             } else {
-                // Seleção aleatória dos primeiros 12 itens
                 filtered = filtered.slice(0, 12);
             }
             
@@ -542,6 +547,8 @@
             window.toggleMobileMenu(false);
             if(target === 'INICIO') {
                 window.scrollTo({top: 0, behavior: 'smooth'});
+            } else if (target === 'GUIAS') {
+                window.scrollToSection('guias', e);
             } else {
                 window.setCategory(target);
                 const prodSec = document.getElementById('produtos');
@@ -549,7 +556,8 @@
             }
         };
 
-        window.scrollToSection = function(id) {
+        window.scrollToSection = function(id, e) {
+            if (e) e.preventDefault();
             const el = document.getElementById(id);
             if (el) el.scrollIntoView({behavior: 'smooth'});
         };
@@ -570,7 +578,6 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             if (window.lucide) lucide.createIcons();
-            // Embaralha o array de produtos uma vez ao carregar a página
             shuffleArray(products);
             window.renderProducts();
 
