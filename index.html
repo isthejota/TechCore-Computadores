@@ -387,44 +387,44 @@
     <script>
         const products = [
             // COMPUTADORES
-            { image: "https://estore.vertexhk.com/wp-content/uploads/2025/10/lenovo-ideapad-slim3-14irh10r-intel-grey-04-800x800.jpg", title: "Notebook Lenovo IdeaPad Slim 3", desc: "RTX 4070 Ti, Intel i7-14700K, 32GB RAM DDR5, SSD 2TB NVMe Gen4.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1iwuABR" },
-            { image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600", title: "PC Elite 4K Beast", desc: "RTX 4090, i9-14900KS, Watercooling Custom. Performance extrema.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/pc-gamer-rtx-4090" },
-            { image: "https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&q=80&w=600", title: "Setup Office Pro", desc: "Processador i5, 16GB RAM, SSD 1TB. Estabilidade e velocidade profissional.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/pc-i5-16gb-ssd-1tb" },
-            { image: "https://images.unsplash.com/photo-1593640495253-23196b27a05f?auto=format&fit=crop&q=80&w=600", title: "Workstation Pro X", desc: "Ryzen Threadripper PRO, 64GB RAM ECC, Dual RTX 4000. Foco em render.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/workstation-ryzen-threadripper" },
-            { image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600", title: "Mini PC Nano Tech", desc: "i7 Ultra, 32GB RAM, 1TB SSD. Potência massiva em tamanho compacto.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/mini-pc-i7-32gb" },
-            { image: "https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?auto=format&fit=crop&q=80&w=600", title: "Streamer Station V2", desc: "i9 14th Gen, Placa de captura 4K, 64GB RAM. Feito para Live.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/pc-streamer-i9" },
-            { image: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?auto=format&fit=crop&q=80&w=600", title: "Gamer Entry Level", desc: "RTX 3060, i5-12400F, 16GB RAM. Perfeito para 1080p competitivo.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/pc-gamer-rtx-3060" },
-            { image: "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&q=80&w=600", title: "Workstation AI Dev", desc: "RTX 4080 Super, 64GB RAM, Otimizada para Machine Learning.", category: 'COMPUTADORES', link: "https://lista.mercadolivre.com.br/workstation-rtx-4080-super" },
+            { image: "https://i.imgur.com/3ILQLIb.png", title: "Ninja Shadow II", desc: "Placa de Vídeo 4GB, Intel Core i5, 16GB RAM, SSD 240GB.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1M9SzK1" },
+            { image: "https://i.imgur.com/khilGDF.png", title: "Pc Gamer Mcl", desc: "Rx 580, Intel I5-12400f, SSD 480GB, RAM 16GB.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1vuyaZf" },
+            { image: "https://i.imgur.com/sDufQyP.png", title: "Pc Gamer Mancer", desc: "Ryzen 5 5500, 16GB RAM, SSD 512GB, Rx 6600.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/2ciMLFa" },
+            { image: "https://i.imgur.com/q6ztd7J.png", title: "Pc Gamer Mancer", desc: "Ryzen 7 5700g, 16GB RAM DDR4, SSSD 240GB. Foco em render.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/2Xk3BWa" },
+            { image: "https://i.imgur.com/JPhhduY.png", title: "Computador Nolag", desc: "Core I9 12900kf, 32GB RAM, NVME 1Tb, RTX 5060.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1rcTMLA" },
+            { image: "https://i.imgur.com/ljDhDOj.png", title: "Pc Gamer Bluepc Aura", desc: "Intel I7 12700kf, RTX 5070, 32GB RAM, SSD 1TB.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1HRQztV" },
+            { image: "https://i.imgur.com/QR8jyFy.png", title: "PC Gamer Aorus", desc: "RTX 5070, Ryzen 7, 32GB RAM, SSD M.2 1tb.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/33eDkL5" },
+            { image: "https://i.imgur.com/MfluLE8.png", title: "PC Gamer Aorus", desc: "RTX 5060, 32GB RAM, Ryzen 7 5700X, SSD M.2 1tb.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1ew538G" },
 
             // NOTEBOOKS
             { image: "https://cdn.akakce.com/z/lenovo/lenovo-ideapad-slim-3-15irh10-83k100q0tr-i5-13420h-8-gb-256-gb-ssd-uhd-graphics-15-3-wuxga-notebook.jpg", title: "Notebook Lenovo IdeaPad Slim 3", desc: "Intel i5-13420H, RAM 8GB, Tela 15.3 FHD, Bateria 3 células 50Wh", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/1iwuABR" },
             { image: "https://tauretcomputadores.com/images/products/Product_202505231037361639267727.PNG-2.webp", title: "Dell Inspiron 15", desc: "Intel Core i5, RAM 8GB, Full HD de 15.6", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/2jDoKaU" },
             { image: "https://avatars.mds.yandex.net/get-mpic/12260097/2a00000195f55ea1e3cbfcabb0eab3b1d4f8/orig", title: "Samsung Book4", desc: "Intel® Inside U300, RAM 8GB, Full HD LED IPS.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/1CfurQZ" },
             { image: "https://www.pcplanet.ru/public_files/products/7f/88/7f88f9cdbc1bf812184a5f910341bf66/original.jpg", title: "Notebook Acer Aspire 5", desc: "AMD Ryzen 7 5700U, RAM 8 GB. Full HD LED IPS", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/2n8TQNu" },
-            { image: "https://www.tradeinn.com/f/14025/140251211_8/asus-%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA-vivobook-pro-15-oled-d6500qc-l1132w-15.6-r5-5600h-16gb-512gb-ssd-rtx-3050.webp", title: "ASUS Vivobook Pro 15", desc: "Intel Core i5, RAM 8 GB, Tela Full HD.", category: 'NOTEBOOKS', link: "https://lista.mercadolivre.com.br/notebook-creator-i7-32gb" },
+            { image: "https://www.tradeinn.com/f/14025/140251211_8/asus-%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA-vivobook-pro-15-oled-d6500qc-l1132w-15.6-r5-5600h-16gb-512gb-ssd-rtx-3050.webp", title: "ASUS Vivobook Pro 15", desc: "Intel Core i5, RAM 8 GB, Tela Full HD.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/2L8dE9s" },
             { image: "https://catalog.livelo.com.br/PTF%2FPRD3873137%2FSKU4800178%2FMEDIUM%2F396519117%2FNotebook-Gamer-Acer-Nitro-V15-com-Intel-Core-i7-de-13-gerao-Nvidia-GeForce-RTX3050-512GB-SSD-16GB-RAM-Tela-156-e-Linux-Gutta--ANV155173E9-Preto.jpeg", title: "Notebook Acer Nitro V15", desc: "Intel Core i5, RAM 8GB, RTX 3050. Full HD IPS.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/1MhZaud" },
             { image: "https://vaiobr.vtexassets.com/arquivos/ids/163549/01_NOTEBOOK_VAIO_FE16_2025_LINUX_1000X1000.jpg?v=638877535245600000", title: "Notebook Vaio Fe16", desc: "Ryzen 7. 16GB RAM, Tela 16 Full HD.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/19Bro2k" },
             { image: "https://c1.neweggimages.com/productimage/nb1280/1TS-000E-18JS3-24.jpg", title: "Notebook Lenovo LOQ", desc: "RTX 3050, Intel Core i5, RAM 16 GB.", category: 'NOTEBOOKS', link: "https://mercadolivre.com/sec/2S8fKB9" },
 
             // PERIFERICOS - MOUSE
-            { image: "https://images.unsplash.com/photo-1527814732934-94a85e4839d9?auto=format&fit=crop&q=80&w=600", title: "Mouse Precision Elite", desc: "26.000 DPI, Sensor Pro, 60g. O melhor do mercado.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-sensor-pro-26000-dpi" },
-            { image: "https://images.unsplash.com/photo-1615663248861-2446a855502a?auto=format&fit=crop&q=80&w=600", title: "Mouse Gamer RGB Neon", desc: "Sensor estável, 8000 DPI, cabo trançado e RGB dinâmico.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-rgb-8000-dpi" },
-            { image: "https://images.unsplash.com/photo-1563297007-0686b7003af7?auto=format&fit=crop&q=80&w=600", title: "Mouse Wireless Ultralight", desc: "2.4GHz sem lag, bateria infinita. Design Honeycomb.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-wireless-ultraleve" },
-            { image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=600", title: "Mouse Ergo Vertical", desc: "Ergonomia absoluta para jornadas longas de trabalho.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-ergonomico-vertical" },
-            { image: "https://images.unsplash.com/photo-1527860299272-3abc6230f69f?auto=format&fit=crop&q=80&w=600", title: "Mouse MMO Master", desc: "12 botões laterais para macros ilimitadas.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-mmo-12-botoes" },
-            { image: "https://images.unsplash.com/photo-1551135020-39e4ca508d9e?auto=format&fit=crop&q=80&w=600", title: "Mouse Trackball Pro", desc: "Controle cirúrgico sem movimentar o pulso.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-trackball-wireless" },
-            { image: "https://images.unsplash.com/photo-1629429464245-48749429398a?auto=format&fit=crop&q=80&w=600", title: "Mouse Silent Click", desc: "Silêncio total para produtividade em qualquer lugar.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-silent-click-wireless" },
-            { image: "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&q=80&w=600", title: "Mouse White Edition", desc: "Performance de elite com acabamento premium em branco.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://lista.mercadolivre.com.br/mouse-gamer-branco-performance" },
+            { image: "https://avatars.mds.yandex.net/get-mpic/12485547/2a0000018ee7e1e53dcc2a1ec8ed836fa986/orig", title: "Mouse Gamer G502 HERO", desc: "25.600 DPI, Sensor Hero 25K, 121g, 11 botões programáveis.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/151Ka4hi" },
+            { image: "https://nesipetsin.com/images/product/2023/09/04/15/d4e2c90a-6c31-4422-a6b0-d719be794ef2.jpg", title: "Logitech M190", desc: "1.000 dpi, Óptico, 89,9G, sem fio.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/1Yxpyky" },
+            { image: "https://microless.com/cdn/products/01f482624530567428902f5461cbbb2b-md.jpg", title: "Redragon Cobra", desc: "270 G, 10000dpi, sensor óptico..", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/2EjazbF" },
+            { image: "https://avatars.mds.yandex.net/get-mpic/12256862/2a000001917edee51b03eaee23c3132b999f/orig", title: "Attack Shark X6", desc: "26000dpi, Sensor PAW3395, Sem Fio.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/2wAffAN" },
+            { image: "https://d1vj3m3urlgav2.cloudfront.net/productImages/1705294524802-1283-a080f0e4-cac1-4084-9ce2-c5db6b318be7.f810107d1c6e8fcc98004820d988b481.webp", title: "Razer Deathadder", desc: "6400DPI, Óptico, 96G.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/2MDwauT" },
+            { image: "https://www.king-komp.com/upload/iblock/02d/hx2a9iye7p1p6i0k7ixghjoyb2qqbi3s.webp", title: "Logitech G Pro", desc: "44.000 DPI, HERO 2, Sem fio.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/1LPaPE4" },
+            { image: "https://50a8240a-a6bd-42d3-9e80-bfa0f0779480.selstorage.ru/media/product/81088/56c9e174-4dcf-48a7-9a39-3f7d40761dc1.webp/base", title: "Razer Viper V3", desc: "30000 DPI, Focus Pro, Sem fio.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/2jWwYkw" },
+            { image: "https://www.techpowerup.com/review/delux-m800-pro-3395/images/title.jpg", title: "Delux M800 Pro", desc: "26.000 DPI, PAW3395, Sem fio.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/2uN3eFi" },
 
             // PERIFERICOS - TECLADO
-            { image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600", title: "Teclado Mecânico Pro X", desc: "Switches Hot-swap, RGB Chroma, Estrutura de Alumínio.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-rgb-hot-swap" },
-            { image: "https://images.unsplash.com/photo-1616410224348-5117ad7f7313?auto=format&fit=crop&q=80&w=600", title: "Teclado RGB Stealth", desc: "Switches silenciosos, wireless tri-mode e design clean.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-silencioso-wireless" },
-            { image: "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&q=80&w=600", title: "Teclado Custom G60", desc: "Formato 60%, switches lubrificados, entusiasta.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-60-por-cento" },
-            { image: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&q=80&w=600", title: "Teclado Low Profile", desc: "Mecânico ultra-fino para agilidade de digitação.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-low-profile" },
-            { image: "https://images.unsplash.com/photo-1618384800394-22121990c092?auto=format&fit=crop&q=80&w=600", title: "Teclado Bluetooth Multi", desc: "Pareie até 3 aparelhos. Estilo clássico retro.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-bluetooth-multidispositivo" },
-            { image: "https://images.unsplash.com/photo-1626956083953-27593bc14f6b?auto=format&fit=crop&q=80&w=600", title: "Teclado Ergonômico Split", desc: "Dividido para postura natural. Máximo conforto.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-ergonomico-split" },
-            { image: "https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&q=80&w=600", title: "Teclado Mac Edition", desc: "Layout Apple nativo com toque tátil mecânico.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-para-mac" },
-            { image: "https://images.unsplash.com/photo-1587829741301-dc798b83aca2?auto=format&fit=crop&q=80&w=600", title: "Teclado TKL Competitive", desc: "Focado em e-sports, sem numérico para mais espaço.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-tkl" },
+            { image: "https://olvit-shop.ru/upload/dev2fun.imagecompress/webp/iblock/56e/06zzei3fk0jm06ws4n8t7490lxot1dyi/08079b6f66e011ee8bd400155d000e0e_54ef6f5766e011ee8bd400155d000e0e.webp", title: "Logitech K120", desc: "Um dos teclados mais vendidos e tradicionais do Mercado Livre, com milhares de vendas e reputação sólida para uso diário e escritório.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1g3cKww" },
+            { image: "https://ir.ozone.ru/s3/multimedia-1-n/7546954019.jpg", title: "MonsGeek FUN60", desc: "teclado gamer 60% com switches magnéticos, Rapid Trigger 0,01 mm e polling rate de até 8.000 Hz para alta performance competitiva.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1FxVU2n" },
+            { image: "https://avatars.mds.yandex.net/i?id=993d8f07f91d65b803ac51d2f5c161c592852ebd-4824426-images-thumbs&n=13", title: "Redragon Kumara Pro V2", desc: "Outro modelo gamer da Redragon com boa presença de vendas e avaliações altas, ótimo para conteúdo de periféricos.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/29gvsMi" },
+            { image: "https://ir.ozone.ru/s3/multimedia-1-0/7685271972.jpg", title: "Attack Shark X68", desc: "teclado gamer RGB com teclas mecânicas, iluminação personalizável e conexão USB para performance e durabilidade no dia a dia.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-low-profile" },
+            { image: "https://microless.com/cdn/products/0a2f4403e3d29464390e3f8fbaf8f13a-hi.jpg", title: "TECLADO AULA HERO 68", desc: "Teclado Aula Hero68he Pro com corpo em alumínio, switch magnético Black Emperor, polling rate de 8.000Hz, Rapid Trigger ultra preciso, keycaps PBT DoubleShot e RGB personalizável para performance gamer competitiva.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2tbZcgp" },
+            { image: "https://cdn.shopify.com/s/files/1/0280/3931/5529/products/203A6610.jpg?v=1700633294", title: "Teclado Aula F87", desc: "Teclado Aula gamer com retroiluminação RGB e tecnologia antighosting, ideal para longas sessões de jogo com precisão e estilo.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1KZz2WZ" },
+            { image: "https://avatars.mds.yandex.net/get-mpic/14331402/2a00000198b0a611fdec3bb64e6f6425b24f/orig", title: "Akko Tac 75", desc: "Teclado Akko Tac75 HE magnético 75% com switches AstroAim, Rapid Trigger 0,01mm, polling rate 8.000Hz, RGB e design ergonômico para máxima performance gamer.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2KcUQme" },
+            { image: "https://m.media-amazon.com/images/I/61BA49bilzL.jpg", title: "Ajazz Ak820", desc: "teclado mecânico compacto 80% com switches táteis, iluminação RGB, keycaps duráveis e construção robusta para performance diária e jogos.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1C1PDyf" },
 
             // PERIFERICOS - MONITOR
             { image: "https://images.unsplash.com/photo-1558977551-d0df18930994?auto=format&fit=crop&q=80&w=600", title: "Monitor Curvo 165Hz", desc: "27 polegadas, 1ms, sRGB 120%. Imersão total.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-curvo-165hz-27" },
@@ -450,11 +450,20 @@
         let currentCat = 'TODOS';
         let currentSubCat = 'MOUSE';
 
+        // Helper para embaralhar o array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
             
-            let filtered = products;
+            let filtered = [...products];
 
             if (currentCat !== 'TODOS') {
                 filtered = filtered.filter(p => p.category === currentCat);
@@ -462,6 +471,7 @@
                     filtered = filtered.filter(p => p.sub === currentSubCat);
                 }
             } else {
+                // Ao recarregar ou selecionar TODOS, o array global já terá sido embaralhado no DOMContentLoaded
                 filtered = products.slice(0, 12);
             }
             
@@ -555,6 +565,8 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
+            // Embaralha o array de produtos uma vez ao carregar a página
+            shuffleArray(products);
             renderProducts();
         });
 
