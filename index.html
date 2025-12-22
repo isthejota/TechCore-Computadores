@@ -385,6 +385,7 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
+        // Array de produtos completo com URLs atualizadas
         const products = [
             // COMPUTADORES
             { image: "https://i.imgur.com/3ILQLIb.png", title: "Ninja Shadow II", desc: "Placa de Vídeo 4GB, Intel Core i5, 16GB RAM, SSD 240GB.", category: 'COMPUTADORES', link: "https://mercadolivre.com/sec/1M9SzK1" },
@@ -417,34 +418,34 @@
             { image: "https://www.techpowerup.com/review/delux-m800-pro-3395/images/title.jpg", title: "Delux M800 Pro", desc: "26.000 DPI, PAW3395, Sem fio.", category: 'PERIFERICOS', sub: 'MOUSE', link: "https://mercadolivre.com/sec/2uN3eFi" },
 
             // PERIFERICOS - TECLADO
-            { image: "https://olvit-shop.ru/upload/dev2fun.imagecompress/webp/iblock/56e/06zzei3fk0jm06ws4n8t7490lxot1dyi/08079b6f66e011ee8bd400155d000e0e_54ef6f5766e011ee8bd400155d000e0e.webp", title: "Logitech K120", desc: "Um dos teclados mais vendidos e tradicionais do Mercado Livre, com milhares de vendas e reputação sólida para uso diário e escritório.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1g3cKww" },
-            { image: "https://ir.ozone.ru/s3/multimedia-1-n/7546954019.jpg", title: "MonsGeek FUN60", desc: "teclado gamer 60% com switches magnéticos, Rapid Trigger 0,01 mm e polling rate de até 8.000 Hz para alta performance competitiva.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1FxVU2n" },
-            { image: "https://avatars.mds.yandex.net/i?id=993d8f07f91d65b803ac51d2f5c161c592852ebd-4824426-images-thumbs&n=13", title: "Redragon Kumara Pro V2", desc: "Outro modelo gamer da Redragon com boa presença de vendas e avaliações altas, ótimo para conteúdo de periféricos.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/29gvsMi" },
-            { image: "https://ir.ozone.ru/s3/multimedia-1-0/7685271972.jpg", title: "Attack Shark X68", desc: "teclado gamer RGB com teclas mecânicas, iluminação personalizável e conexão USB para performance e durabilidade no dia a dia.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-low-profile" },
-            { image: "https://microless.com/cdn/products/0a2f4403e3d29464390e3f8fbaf8f13a-hi.jpg", title: "TECLADO AULA HERO 68", desc: "Teclado Aula Hero68he Pro com corpo em alumínio, switch magnético Black Emperor, polling rate de 8.000Hz, Rapid Trigger ultra preciso, keycaps PBT DoubleShot e RGB personalizável para performance gamer competitiva.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2tbZcgp" },
-            { image: "https://cdn.shopify.com/s/files/1/0280/3931/5529/products/203A6610.jpg?v=1700633294", title: "Teclado Aula F87", desc: "Teclado Aula gamer com retroiluminação RGB e tecnologia antighosting, ideal para longas sessões de jogo com precisão e estilo.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1KZz2WZ" },
-            { image: "https://avatars.mds.yandex.net/get-mpic/14331402/2a00000198b0a611fdec3bb64e6f6425b24f/orig", title: "Akko Tac 75", desc: "Teclado Akko Tac75 HE magnético 75% com switches AstroAim, Rapid Trigger 0,01mm, polling rate 8.000Hz, RGB e design ergonômico para máxima performance gamer.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2KcUQme" },
-            { image: "https://m.media-amazon.com/images/I/61BA49bilzL.jpg", title: "Ajazz Ak820", desc: "teclado mecânico compacto 80% com switches táteis, iluminação RGB, keycaps duráveis e construção robusta para performance diária e jogos.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1C1PDyf" },
+            { image: "https://olvit-shop.ru/upload/dev2fun.imagecompress/webp/iblock/56e/06zzei3fk0jm06ws4n8t7490lxot1dyi/08079b6f66e011ee8bd400155d000e0e_54ef6f5766e011ee8bd400155d000e0e.webp", title: "Logitech K120", desc: "Um dos teclados mais vendidos e tradicionais do Mercado Livre, com milhares de vendas.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1g3cKww" },
+            { image: "https://ir.ozone.ru/s3/multimedia-1-n/7546954019.jpg", title: "MonsGeek FUN60", desc: "teclado gamer 60% com switches magnéticos, Rapid Trigger 0,01 mm e polling rate de até 8.000 Hz.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1FxVU2n" },
+            { image: "https://avatars.mds.yandex.net/i?id=993d8f07f91d65b803ac51d2f5c161c592852ebd-4824426-images-thumbs&n=13", title: "Redragon Kumara Pro V2", desc: "Modelo gamer da Redragon com boa presença de vendas e avaliações altas.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/29gvsMi" },
+            { image: "https://ir.ozone.ru/s3/multimedia-1-0/7685271972.jpg", title: "Attack Shark X68", desc: "teclado gamer RGB com teclas mecânicas, iluminação personalizável e conexão USB.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://lista.mercadolivre.com.br/teclado-mecanico-low-profile" },
+            { image: "https://microless.com/cdn/products/0a2f4403e3d29464390e3f8fbaf8f13a-hi.jpg", title: "TECLADO AULA HERO 68", desc: "polling rate de 8.000Hz, Rapid Trigger ultra preciso, keycaps PBT DoubleShot.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2tbZcgp" },
+            { image: "https://cdn.shopify.com/s/files/1/0280/3931/5529/products/203A6610.jpg?v=1700633294", title: "Teclado Aula F87", desc: "Teclado Aula gamer com retroiluminação RGB e tecnologia antighosting.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1KZz2WZ" },
+            { image: "https://avatars.mds.yandex.net/get-mpic/14331402/2a00000198b0a611fdec3bb64e6f6425b24f/orig", title: "Akko Tac 75", desc: "Akko Tac75 HE magnético 75% com switches AstroAim, Rapid Trigger 0,01mm.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/2KcUQme" },
+            { image: "https://m.media-amazon.com/images/I/61BA49bilzL.jpg", title: "Ajazz Ak820", desc: "teclado mecânico compacto 80% com switches táteis, iluminação RGB.", category: 'PERIFERICOS', sub: 'TECLADO', link: "https://mercadolivre.com/sec/1C1PDyf" },
 
             // PERIFERICOS - MONITOR
-            { image: "https://images.unsplash.com/photo-1558977551-d0df18930994?auto=format&fit=crop&q=80&w=600", title: "Monitor Curvo 165Hz", desc: "27 polegadas, 1ms, sRGB 120%. Imersão total.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-curvo-165hz-27" },
-            { image: "https://images.unsplash.com/photo-1527860299272-3abc6230f69f?auto=format&fit=crop&q=80&w=600", title: "Monitor Ultrawide 34\"", desc: "1440p, 144Hz. Perfeito para multitarefa.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-ultrawide-34-polegadas" },
-            { image: "https://images.unsplash.com/photo-1547119957-637f8679db1e?auto=format&fit=crop&q=80&w=600", title: "Monitor 4K Studio 32\"", desc: "IPS 99% Adobe RGB. Cor para profissionais.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-4k-ips-32-polegadas" },
-            { image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=600", title: "Monitor OLED 240Hz", desc: "A imagem mais rápida e nítida do mundo gamer.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-oled-240hz" },
-            { image: "https://images.unsplash.com/photo-1586210579191-33b45e38fa2c?auto=format&fit=crop&q=80&w=600", title: "Monitor Vertical Ergo", desc: "Pivotante 90 graus. O favorito dos devs.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-pivoting-vertical" },
-            { image: "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?auto=format&fit=crop&q=80&w=600", title: "Monitor Portátil 15.6\"", desc: "USB-C, leve e fino para trabalho remoto.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-portatil-usb-c" },
-            { image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&q=80&w=600", title: "Monitor 360Hz Esports", desc: "Taxa de elite para performance competitiva.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-360hz-gamer" },
-            { image: "https://images.unsplash.com/photo-1616763355603-9755a640a287?auto=format&fit=crop&q=80&w=600", title: "Monitor QLED 2K 27\"", desc: "Brilho intenso e cores vibrantes HDR.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://lista.mercadolivre.com.br/monitor-qled-2k-hdr" },
+            { image: "https://www.lg.com/ee/images/monitorid/md07608220/gallery/medium01.jpg", title: "LG UltraGear", desc: "Ideal para jogos e produtividade com qualidade de imagem superior.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2nyk6S7" },
+            { image: "https://boletando.com/wp-content/uploads/2023/03/ezgif-3-9e38998276.jpg", title: "Samsung Odyssey G30", desc: "Full HD Va, 144Hz. ótimo custo-benefício geral.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/11PX6A5" },
+            { image: "https://a.allegroimg.com/original/11cd04/9308c3f34c2da07e41d655b98d06/Monitor-LED-AOC-24G2U-BK-23-8-IPS-PLS-GAMING", title: "Gamer HERO", desc: "Excelente custo-benefício para jogos e uso diário.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2CrVWYg" },
+            { image: "https://www.pcliquidations.com/images/items/dell-c2423h-23-8-wled-video-conferencing-monitor.jpg", title: "Dell De", desc: "Perfeito para quem faz design, edição e produtividade.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2HpUfbw" },
+            { image: "https://www.mrpc.com.co/wp-content/uploads/2023/09/001-73.jpg", title: "Samsung LS32A600", desc: "Pivotante 90 graus. O favorito dos devs.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2owya8j" },
+            { image: "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/m/c/mcr-hznp27-bl011651610v23.jpg", title: "Mancer Horizon Z2", desc: "monitor 27″ VA FHD com 100 Hz, tempo de resposta de 1 ms e entradas HDMI/VGA para jogos fluídos e visual imersivo.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/2ph7Htm" },
+            { image: "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/p/g/pg-ctrs24b-bl0112.jpg", title: "Pichau Centauri", desc: "Taxa de elite para performance competitiva.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/19FLwhc" },
+            { image: "https://avatars.mds.yandex.net/get-mpic/4782842/img_id2272029361396238377.jpeg/orig", title: "Asus TUF Gaming", desc: "Brilho intenso e cores vibrantes HDR.", category: 'PERIFERICOS', sub: 'MONITOR', link: "https://mercadolivre.com/sec/1dyVsKc" },
 
             // PERIFERICOS - PLACA DE VÍDEO
-            { image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&q=80&w=600", title: "RTX 4080 Super", desc: "DLSS 3, 16GB GDDR6X. Gráficos de elite.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4080-super" },
-            { image: "https://images.unsplash.com/photo-1632759162353-1999aa29824b?auto=format&fit=crop&q=80&w=600", title: "RTX 4090 Extreme", desc: "24GB GDDR6X. Poder absoluto sem limites.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4090" },
-            { image: "https://images.unsplash.com/photo-1587202392491-e0e0c5963920?auto=format&fit=crop&q=80&w=600", title: "RTX 4070 Dual OC", desc: "Perfeita para 1440p com máxima eficiência.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4070-dual" },
-            { image: "https://images.unsplash.com/photo-1591489383431-70233479698d?auto=format&fit=crop&q=80&w=600", title: "RX 7900 XTX 24GB", desc: "A topo de linha AMD para performance pura.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rx-7900-xtx" },
-            { image: "https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&q=80&w=600", title: "RTX 4060 Ti Master", desc: "Ideal para 1080p competitivo ultra.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-4060-ti" },
-            { image: "https://images.unsplash.com/photo-1544265852-a41581cab49a?auto=format&fit=crop&q=80&w=600", title: "RTX 3060 Vision OC", desc: "Estilo premium em branco e performance estável.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rtx-3060-vision-white" },
-            { image: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=600", title: "RX 7800 XT Speed", desc: "16GB VRAM para texturas pesadas e 4K.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/rx-7800-xt" },
-            { image: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=600", title: "Arc A770 16GB", desc: "Inovação Intel com suporte AV1 nativo.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://lista.mercadolivre.com.br/intel-arc-a770-16gb" }
+            { image: "https://n.cdn.cdek.shopping/images/shopping/d1208caf274041759001381adfdd9e4a.jpg?v=1", title: "RTX 4080 Super", desc: "DLSS 3, 16GB GDDR6X. Gráficos de elite.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2f4wiED" },
+            { image: "https://img.computerunivers.net/cp/images/1000x1000/PI_512638970", title: "RTX 5080", desc: "16GB GDDR6X. Poder absoluto sem limites.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2k9ZKFw" },
+            { image: "https://www.buyerspk.com/cdn/shop/files/zt-d40720h-10m-image08_0_1024x.jpg?v=1712565994", title: "RTX 4070 Dual OC", desc: "Perfeita para 1440p com máxima eficiência.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/1LnYsvH" },
+            { image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/391d0d7a-b5c3-4483-8c28-e1bd3955dbb0.jpg", title: "RX 7900 XTX 24GB", desc: "A topo de linha AMD para performance pura.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2niQnbt" },
+            { image: "https://i.ebayimg.com/images/g/Ol4AAOSw0XBnGK~l/s-l1600.jpg", title: "RTX 4060 Ti", desc: "Ideal para 1080p competitivo ultra.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2y5Bspg" },
+            { image: "https://avatars.mds.yandex.net/i?id=6b7ce694c40f2eeb5c2f27e61078ebfe40e88f7e-5291460-images-thumbs&n=13", title: "RTX 3060 Vision OC", desc: "Estilo premium em branco e performance estável.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/1nQUS2a" },
+            { image: "https://ressi.ru/upload/iblock/1e1/e443o3uc7xahz6ruoo3p97mt2yle7tyq/f8865f75fe7cf83daa2c4deca59aa799.jpg", title: "RX 7600XT ", desc: "16GB VRAM para texturas pesadas e 4K.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/1BeZrPf" },
+            { image: "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/5/6/56isn8mdabcc5.jpg", title: "RTX 5060TI", desc: "Inovação Intel com suporte AV1 nativo.", category: 'PERIFERICOS', sub: 'PLACA', link: "https://mercadolivre.com/sec/2TQuKzE" }
         ];
 
         let currentCat = 'TODOS';
@@ -459,8 +460,10 @@
             return array;
         }
 
-        function renderProducts() {
+        // Torna as funções globais para que o HTML possa acessá-las
+        window.renderProducts = function() {
             const grid = document.getElementById('product-grid');
+            if (!grid) return;
             grid.innerHTML = '';
             
             let filtered = [...products];
@@ -471,8 +474,8 @@
                     filtered = filtered.filter(p => p.sub === currentSubCat);
                 }
             } else {
-                // Ao recarregar ou selecionar TODOS, o array global já terá sido embaralhado no DOMContentLoaded
-                filtered = products.slice(0, 12);
+                // Seleção aleatória dos primeiros 12 itens
+                filtered = filtered.slice(0, 12);
             }
             
             filtered.forEach(p => {
@@ -493,19 +496,21 @@
                     </div>
                 `;
             });
-            lucide.createIcons();
-        }
+            if (window.lucide) lucide.createIcons();
+        };
 
-        function setCategory(cat) {
+        window.setCategory = function(cat) {
             currentCat = cat;
             const subFilterContainer = document.getElementById('sub-category-filters');
             
-            if (cat === 'PERIFERICOS') {
-                subFilterContainer.classList.remove('hidden');
-                subFilterContainer.classList.add('flex');
-            } else {
-                subFilterContainer.classList.add('hidden');
-                subFilterContainer.classList.remove('flex');
+            if (subFilterContainer) {
+                if (cat === 'PERIFERICOS') {
+                    subFilterContainer.classList.remove('hidden');
+                    subFilterContainer.classList.add('flex');
+                } else {
+                    subFilterContainer.classList.add('hidden');
+                    subFilterContainer.classList.remove('flex');
+                }
             }
 
             document.querySelectorAll('.cat-btn').forEach(btn => {
@@ -516,11 +521,11 @@
                 }
             });
             
-            if (cat === 'PERIFERICOS') setSubCategory(currentSubCat);
-            else renderProducts();
-        }
+            if (cat === 'PERIFERICOS') window.setSubCategory(currentSubCat);
+            else window.renderProducts();
+        };
 
-        function setSubCategory(sub) {
+        window.setSubCategory = function(sub) {
             currentSubCat = sub;
             document.querySelectorAll('.sub-btn').forEach(btn => {
                 if(btn.dataset.sub === sub) {
@@ -529,26 +534,29 @@
                     btn.className = "sub-btn px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] glass text-slate-500 hover:text-white transition-all";
                 }
             });
-            renderProducts();
-        }
+            window.renderProducts();
+        };
 
-        function navigateTo(target, e) {
-            e.preventDefault();
-            toggleMobileMenu(false);
+        window.navigateTo = function(target, e) {
+            if (e) e.preventDefault();
+            window.toggleMobileMenu(false);
             if(target === 'INICIO') {
                 window.scrollTo({top: 0, behavior: 'smooth'});
             } else {
-                setCategory(target);
-                document.getElementById('produtos').scrollIntoView({behavior: 'smooth'});
+                window.setCategory(target);
+                const prodSec = document.getElementById('produtos');
+                if (prodSec) prodSec.scrollIntoView({behavior: 'smooth'});
             }
-        }
+        };
 
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
-        }
+        window.scrollToSection = function(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({behavior: 'smooth'});
+        };
 
-        function toggleMobileMenu(show) {
+        window.toggleMobileMenu = function(show) {
             const el = document.getElementById('mobile-menu-overlay');
+            if (!el) return;
             if(show) {
                 el.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
                 el.classList.add('opacity-100', 'visible');
@@ -558,20 +566,23 @@
                 el.classList.remove('opacity-100', 'visible');
                 document.body.style.overflow = 'unset';
             }
-        }
-
-        document.getElementById('menu-toggle').addEventListener('click', () => toggleMobileMenu(true));
-        document.getElementById('menu-close').addEventListener('click', () => toggleMobileMenu(false));
+        };
 
         window.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
             // Embaralha o array de produtos uma vez ao carregar a página
             shuffleArray(products);
-            renderProducts();
+            window.renderProducts();
+
+            const toggle = document.getElementById('menu-toggle');
+            const close = document.getElementById('menu-close');
+            if (toggle) toggle.addEventListener('click', () => window.toggleMobileMenu(true));
+            if (close) close.addEventListener('click', () => window.toggleMobileMenu(false));
         });
 
         window.addEventListener('scroll', () => {
             const h = document.getElementById('main-header');
+            if (!h) return;
             if (window.scrollY > 20) {
                 h.classList.add('glass', 'py-3', 'shadow-xl');
                 h.classList.remove('py-6');
